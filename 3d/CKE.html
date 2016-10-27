@@ -1,0 +1,192 @@
+<style>
+.stage .component {
+  position:relative
+}
+
+.stage .component svg,
+.stage .component div
+{ position:absolute }
+
+.stage {
+  transform:translate(450px,253px) rotateX(90deg) translate3d(-200px,-100px,20px);
+}
+
+.stage .component.a1 {}
+.stage .component.a2 { transform: translate3d(0,-50px,20px); }
+.stage .component.a3 { transform: translate3d(0,-100px,40px); }
+
+.stage .component svg path { fill: #cc9900 }
+
+.stage .component svg.up path { fill: #cc9900}
+.stage .component svg.down path { fill: #664d00}
+.stage .component svg.front path { fill: #806000}
+.stage .component div.front-arc * { background: #806000}
+.stage .component div.behind,
+.stage .component div.behind-arc * { background: #ffbf00 }
+.stage .component div.right,
+.stage .component div.left { background: #b38600}
+
+.stage .component div.right,
+.stage .component div.left { width:20px;height:60px; }
+.stage .component div.behind,
+.stage .component div.front-arc,
+.stage .component div.behind-arc { width:20px;height:400px; }
+
+.stage .component svg.down { transform: translateZ(-20px); }
+.stage .component div.left { transform: translateY(40px) rotateY(90deg) translateX(10px) translateZ(-10px); }
+.stage .component div.right { transform: translateY(40px) rotateY(90deg) translateX(10px) translateZ(390px); }
+.stage .component svg.front { transform: translate(200px,100px) rotateY(90deg) rotateX(90deg) translateZ(200px) translate(10px,-10px); }
+.stage .component div.behind { transform: translate(200px,40px) rotateY(90deg) rotateX(90deg) translateZ(200px) translate(10px,-10px); }
+
+/* sqrt((400)^2-(300)^2) = 264.575131 */
+.stage .component div.front-arc { transform: translateY(107px) translate(200px,100px) rotateY(90deg) rotateX(90deg) translateZ(200px) translate(10px,-10px) translateZ(-264.575131px); }
+.stage .component div.behind-arc { transform: translateY(107px) translate(200px,40px) rotateY(90deg) rotateX(90deg) translateZ(200px) translate(10px,-10px) translateZ(-264.575131px); }
+
+.stage .component div.front-arc div,
+.stage .component div.behind-arc div { width:20px;height:56px;position:absolute;top:50%; }
+
+/* arccos(300/400)*180/pi = 41.4096221 */
+.stage .component div.front-arc div.a1,
+.stage .component div.behind-arc div.a1 { transform: translateY(-50%) rotateX(18deg) translateZ(400px); }
+.stage .component div.front-arc div.a2,
+.stage .component div.behind-arc div.a2 { transform: translateY(-50%) rotateX(15deg) translateZ(400px); }
+.stage .component div.front-arc div.a3,
+.stage .component div.behind-arc div.a3 { transform: translateY(-50%) rotateX(12deg) translateZ(400px); }
+.stage .component div.front-arc div.a4,
+.stage .component div.behind-arc div.a4 { transform: translateY(-50%) rotateX(9deg) translateZ(400px); }
+.stage .component div.front-arc div.a5,
+.stage .component div.behind-arc div.a5 { transform: translateY(-50%) rotateX(6deg) translateZ(400px); }
+.stage .component div.front-arc div.a6,
+.stage .component div.behind-arc div.a6 { transform: translateY(-50%) rotateX(3deg) translateZ(400px); }
+.stage .component div.front-arc div.a7,
+.stage .component div.behind-arc div.a7 { transform: translateY(-50%) rotateX(0deg) translateZ(400px); }
+.stage .component div.front-arc div.a8,
+.stage .component div.behind-arc div.a8 { transform: translateY(-50%) rotateX(-3deg) translateZ(400px); }
+.stage .component div.front-arc div.a9,
+.stage .component div.behind-arc div.a9 { transform: translateY(-50%) rotateX(-6deg) translateZ(400px); }
+.stage .component div.front-arc div.a10,
+.stage .component div.behind-arc div.a10 { transform: translateY(-50%) rotateX(-9deg) translateZ(400px); }
+.stage .component div.front-arc div.a11,
+.stage .component div.behind-arc div.a11 { transform: translateY(-50%) rotateX(-12deg) translateZ(400px); }
+.stage .component div.front-arc div.a12,
+.stage .component div.behind-arc div.a12 { transform: translateY(-50%) rotateX(-15deg) translateZ(400px); }
+.stage .component div.front-arc div.a13,
+.stage .component div.behind-arc div.a13 { transform: translateY(-50%) rotateX(-18deg) translateZ(400px); }
+</style>
+
+<div class="stage">
+  <div class="component a1">
+    <svg class="up" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+    <svg class="down" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+    <div class="left"></div>
+    <div class="right"></div>
+    <svg class="front" viewport="0 0 20 400" width="20" height="400"><path d="m0 0 h20 v50 h-20 z m0 400 v-50 h20 v50 z"></path></svg>
+    <div class="behind"></div>
+    <div class="behind-arc">
+      <div class="a1"></div>
+      <div class="a2"></div>
+      <div class="a3"></div>
+      <div class="a4"></div>
+      <div class="a5"></div>
+      <div class="a6"></div>
+      <div class="a7"></div>
+      <div class="a8"></div>
+      <div class="a9"></div>
+      <div class="a10"></div>
+      <div class="a11"></div>
+      <div class="a12"></div>
+      <div class="a13"></div>
+    </div>
+    <div class="front-arc">
+      <div class="a1"></div>
+      <div class="a2"></div>
+      <div class="a3"></div>
+      <div class="a4"></div>
+      <div class="a5"></div>
+      <div class="a6"></div>
+      <div class="a7"></div>
+      <div class="a8"></div>
+      <div class="a9"></div>
+      <div class="a10"></div>
+      <div class="a11"></div>
+      <div class="a12"></div>
+      <div class="a13"></div>
+    </div>
+  </div>
+  <div class="component a2">
+    <svg class="up" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+    <svg class="down" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+    <div class="left"></div>
+    <div class="right"></div>
+    <svg class="front" viewport="0 0 20 400" width="20" height="400"><path d="m0 0 h20 v50 h-20 z m0 400 v-50 h20 v50 z"></path></svg>
+    <div class="behind"></div>
+    <div class="behind-arc">
+      <div class="a1"></div>
+      <div class="a2"></div>
+      <div class="a3"></div>
+      <div class="a4"></div>
+      <div class="a5"></div>
+      <div class="a6"></div>
+      <div class="a7"></div>
+      <div class="a8"></div>
+      <div class="a9"></div>
+      <div class="a10"></div>
+      <div class="a11"></div>
+      <div class="a12"></div>
+      <div class="a13"></div>
+    </div>
+    <div class="front-arc">
+      <div class="a1"></div>
+      <div class="a2"></div>
+      <div class="a3"></div>
+      <div class="a4"></div>
+      <div class="a5"></div>
+      <div class="a6"></div>
+      <div class="a7"></div>
+      <div class="a8"></div>
+      <div class="a9"></div>
+      <div class="a10"></div>
+      <div class="a11"></div>
+      <div class="a12"></div>
+      <div class="a13"></div>
+    </div>
+  </div>
+  <div class="component a3">
+    <svg class="up" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+    <svg class="down" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+    <div class="left"></div>
+    <div class="right"></div>
+    <svg class="front" viewport="0 0 20 400" width="20" height="400"><path d="m0 0 h20 v50 h-20 z m0 400 v-50 h20 v50 z"></path></svg>
+    <div class="behind"></div>
+    <div class="behind-arc">
+      <div class="a1"></div>
+      <div class="a2"></div>
+      <div class="a3"></div>
+      <div class="a4"></div>
+      <div class="a5"></div>
+      <div class="a6"></div>
+      <div class="a7"></div>
+      <div class="a8"></div>
+      <div class="a9"></div>
+      <div class="a10"></div>
+      <div class="a11"></div>
+      <div class="a12"></div>
+      <div class="a13"></div>
+    </div>
+    <div class="front-arc">
+      <div class="a1"></div>
+      <div class="a2"></div>
+      <div class="a3"></div>
+      <div class="a4"></div>
+      <div class="a5"></div>
+      <div class="a6"></div>
+      <div class="a7"></div>
+      <div class="a8"></div>
+      <div class="a9"></div>
+      <div class="a10"></div>
+      <div class="a11"></div>
+      <div class="a12"></div>
+      <div class="a13"></div>
+    </div>
+  </div>
+</div>

@@ -8,8 +8,8 @@
     <a id="anchor"></a>
     <script>
 var coll = 'OOAccount'
-  , idx  = '1'
-  , href = '../?c=' + btoa( coll ) + '&i=' + idx
+  , idx  = 'Werkplek van de toekomst'
+  , href = '../?s=' + encodeURIComponent( coll ) + '&p=' + encodeURIComponent( idx )
 
 anchor.setAttribute( 'href', href )
 anchor.innerText = href

@@ -281,6 +281,19 @@ function parseSlide(slideshow,i,embed){
   return slide;
 }
 
+function showXs (bool) {
+  if (bool===undefined)
+    return xs
+  else {
+    if (bool)
+      $('.axis').show()
+    else if (!bool)
+      $('.axis').hide()
+    
+    xs=!xs
+  }
+}
+
 function goTo(id) {
   id = id.charAt(0).toUpperCase();
   if(!$('#'+id).hasClass('S-as')){
@@ -356,6 +369,7 @@ var
     mov = {a:0,d:0,f:0,g:0,i:0,j:0,k:0,l:0,r:0,s:0,t:0,w:0,x:0,z:0,ctr:0,shft:0,hud:1},
     mainstyle = document.styleSheets[1],
     zoom = 1,
+    xs,
     
     // Edit support
     currentEditShow,
@@ -382,6 +396,7 @@ window.addEventListener('load',function(){
     if (ek==36||ek==40) prevSlide(true);	// ∨ or Home 
     if (ek==35||ek==38) nextSlide(true);	// ∧ or End 
     if (ek==81) currentSlide();			// Q 
+    if (ek==89) showXs(!showXs())		// Y 
 
     // Moving, rotating, etc. 
     if (ek==65) mov.a=1;			// A 

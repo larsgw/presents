@@ -3,6 +3,22 @@ var OOAccount = {
   cover:"http://www.wall321.com/thumbnails/detail/20121107/android%20google%20android%20jelly%20bean%201920x1080%20wallpaper_www.wall321.com_26.jpg",
   slideshowdata:[
     {
+      title:'Een Podium Voor het CKE',
+      sta:1,
+      load:'puzzle',
+      style:'dev2',
+      type:'puzzle',
+      slides:[
+	{
+	  kind:'html',
+	  type:'html',hide:true,
+	  title:'Podium',
+	  pos:{x:'0',y:'0',z:'0'},
+	  contenturl:'3d/CKE.html'
+	}
+      ]
+    },
+    {
       title:'Werkplek van de toekomst - Introductie',
       sta:1,
       load:'long',
@@ -11,7 +27,7 @@ var OOAccount = {
 	{
 	  type:'title',
 	  title:'Werkplek van de toekomst',
-	  subtitle:'<span style="font-size:.75em;">door Stef Lamerichs, Rob Schellingerhout,<br>Koen Smeets en Lars Willighagen</span>'
+	  subtitle:'<span style="font-size:.75em;">door Stef, Rob, Koen en Lars</span>'
 	},
 	{
 	  title:'Onderzoek',
