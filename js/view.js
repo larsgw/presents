@@ -39,7 +39,10 @@ function displaySlides(slideshow){
 	idx = parseInt(slideHTML.data('idx'));
 	slideHTML = slideHTML.find('.slide').last().find('.content-replace');
     if(slideHTML.length)SJSLoadHTML[idx]=false;
-    slideHTML.parent().load(slideHTML.data('content-url'),function(){ SJSLoadHTML[idx]=true; });
+    slideHTML.parent().load(slideHTML.data('content-url'),function(){
+      SJSLoadHTML[idx] = true;
+      toggle3d($(this))
+    });
   }
   
   $('#V div.slider').addClass(load+'load');
@@ -293,53 +296,6 @@ $(document).ready(function(){
     if (mov.ctr&&mov.shft&&mov.hud) { hideHUD(true); mov.h=0; }
     else if (mov.ctr&&mov.shft&&!mov.hud) { hideHUD(false); mov.h=1; }
   });
-   
-  $('#V').keyup(function(e) {
-    ek = e.keyCode;
-    
-    // Moving, rotating, etc. 
-    if (ek==65) mov.a=0;			// A 
-    if (ek==68) mov.d=0;			// D 
-    if (ek==87) mov.s=0;			// S 
-    if (ek==83) mov.w=0;			// W 
-    if (ek==90) mov.x=0;			// X 
-    if (ek==88) mov.z=0;			// Z 
-		    
-    if (ek==74) mov.j=0;			// J 
-    if (ek==76) mov.l=0;			// L 
-    if (ek==73) mov.i=0;			// K 
-    if (ek==75) mov.k=0;			// I 
-    if (ek==84) mov.t=0;			// T 
-    if (ek==71) mov.g=0;			// G 
-		    
-    if (ek==82) mov.r=0;			// R 
-    if (ek==70) mov.f=0;			// F
-
-    // Other things
-    if (ek==17) mov.ctr=0;			// Ctrl
-    if (ek==16) mov.shft=0;			// Shft
-  });
-  
-  setInterval(function () {
-    if (mov.w) $('.rotate-container').transition({rotateX:'+=1'},9);
-    if (mov.s) $('.rotate-container').transition({rotateX:'-=1'},9);
-    if (mov.a) $('.rotate-container').transition({rotateY:'+=1'},9);
-    if (mov.d) $('.rotate-container').transition({rotateY:'-=1'},9);
-    if (mov.z) $('.rotate-container').transition({rotate :'+=1'},9);
-    if (mov.x) $('.rotate-container').transition({rotate :'-=1'},9);
-    
-    var msp = ( 5 * ( 1 / $('.rotate-container').css('scale') ) ).toString();
-	      
-    if (mov.i) $('.slides').transition({top:'+='+msp,queue:false},9);
-    if (mov.k) $('.slides').transition({top:'-='+msp,queue:false},9);
-    if (mov.j) $('.slides').transition({left:'+='+msp,queue:false},9);
-    if (mov.l) $('.slides').transition({left:'-='+msp,queue:false},9);
-    if (mov.t) $('.slides').transition({z:'+='+msp},9);
-    if (mov.g) $('.slides').transition({z:'-='+msp},9);
-    
-    if (mov.r) $('.rotate-container').transition({scale:'+=.01'},9);
-    if (mov.f) $('.rotate-container').transition({scale:'-=.01'},9);
-  },10);
   
   /*$('.slider').draggable({
     revert:true,

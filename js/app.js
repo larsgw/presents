@@ -381,6 +381,7 @@ var
 $(document).ready(function(){  
   // Ripple effect
   $('.arrow,.title,#T-a,.T-f,button,#T section h2,#L-Ca-b-Ma li,#E-Cb-Ba').ripple();
+  $('#toggle-bar').toggle()
 });
 
 window.addEventListener('load',function(){
@@ -389,7 +390,7 @@ window.addEventListener('load',function(){
   
    $("body").keydown(function(e) {
     ek = e.keyCode;
-    if (ek!=34&&ek!=37&&ek!=32&&ek!=33&&ek!=39&&ek!=36&&ek!=40&&ek!=35&&ek!=38&&ek!=81)
+    if (/*ek!=34&&ek!=37&&*/ek!=32&&ek!=33&&ek!=39/*&&ek!=36&&ek!=40&&ek!=35&&ek!=38&&ek!=81*/)
       $('.slide').removeClass('path');
     if (ek==34||ek==37) prevSlide();		// < or Pg down 
     if (ek==32||ek==33||ek==39) nextSlide();	// > or Pg up or space 
@@ -397,21 +398,22 @@ window.addEventListener('load',function(){
     if (ek==35||ek==38) nextSlide(true);	// ∧ or End 
     if (ek==81) currentSlide();			// Q 
     if (ek==89) showXs(!showXs())		// Y 
+    if (ek==67) $('#toggle-bar').toggle()	// C 
 
     // Moving, rotating, etc. 
     if (ek==65) mov.a=1;			// A 
     if (ek==68) mov.d=1;			// D 
     if (ek==87) mov.s=1;			// S 
     if (ek==83) mov.w=1;			// W 
-    if (ek==90) mov.x=1;			// X 
-    if (ek==88) mov.z=1;			// Z 
+    if (ek==84) mov.t=1;			// T 
+    if (ek==71) mov.g=1;			// G 
 		    
     if (ek==74) mov.j=1;			// J 
     if (ek==76) mov.l=1;			// L 
     if (ek==73) mov.i=1;			// K 
     if (ek==75) mov.k=1;			// I 
-    if (ek==84) mov.t=1;			// T 
-    if (ek==71) mov.g=1;			// G 
+    if (ek==90) mov.x=1;			// X 
+    if (ek==88) mov.z=1;			// Z 
 		    
     if (ek==82) mov.r=1;			// R 
     if (ek==70) mov.f=1;			// F
@@ -433,15 +435,15 @@ window.addEventListener('load',function(){
     if (ek==68) mov.d=0;			// D 
     if (ek==87) mov.s=0;			// S 
     if (ek==83) mov.w=0;			// W 
-    if (ek==90) mov.x=0;			// X 
-    if (ek==88) mov.z=0;			// Z 
+    if (ek==84) mov.t=0;			// T 
+    if (ek==71) mov.g=0;			// G 
 		    
     if (ek==74) mov.j=0;			// J 
     if (ek==76) mov.l=0;			// L 
     if (ek==73) mov.i=0;			// K 
     if (ek==75) mov.k=0;			// I 
-    if (ek==84) mov.t=0;			// T 
-    if (ek==71) mov.g=0;			// G 
+    if (ek==90) mov.x=0;			// X 
+    if (ek==88) mov.z=0;			// Z 
 		    
     if (ek==82) mov.r=0;			// R 
     if (ek==70) mov.f=0;			// F
@@ -452,24 +454,24 @@ window.addEventListener('load',function(){
   });
   
   setInterval(function () {
-    if (mov.w) $('.rotate-container').transition({rotateX:'+=1'},9);
-    if (mov.s) $('.rotate-container').transition({rotateX:'-=1'},9);
-    if (mov.a) $('.rotate-container').transition({rotateY:'+=1'},9);
-    if (mov.d) $('.rotate-container').transition({rotateY:'-=1'},9);
+    if (mov.k) $('.rotate-container').transition({rotateX:'+=1'},9);
+    if (mov.i) $('.rotate-container').transition({rotateX:'-=1'},9);
+    if (mov.j) $('.rotate-container').transition({rotateY:'+=1'},9);
+    if (mov.l) $('.rotate-container').transition({rotateY:'-=1'},9);
     if (mov.z) $('.rotate-container').transition({rotate :'+=1'},9);
     if (mov.x) $('.rotate-container').transition({rotate :'-=1'},9);
     
     var msp = ( 5 * ( 1 / $('.rotate-container').css('scale') ) ).toString();
 	      
-    if (mov.i) $('.slides').transition({top:'+='+msp,queue:false},9);
-    if (mov.k) $('.slides').transition({top:'-='+msp,queue:false},9);
-    if (mov.j) $('.slides').transition({left:'+='+msp,queue:false},9);
-    if (mov.l) $('.slides').transition({left:'-='+msp,queue:false},9);
-    if (mov.t) $('.slides').transition({z:'+='+msp},9);
-    if (mov.g) $('.slides').transition({z:'-='+msp},9);
+    if (mov.w) $('.slides').transition({z:'-='+msp,queue:false},9);
+    if (mov.s) $('.slides').transition({z:'+='+msp,queue:false},9);
+    if (mov.a) $('.slides').transition({left:'+='+msp,queue:false},9);
+    if (mov.d) $('.slides').transition({left:'-='+msp,queue:false},9);
+    if (mov.r) $('.slides').transition({top:'+='+msp},9);
+    if (mov.f) $('.slides').transition({top:'-='+msp},9);
     
-    if (mov.r) $('.rotate-container').transition({scale:'+=.01'},9);
-    if (mov.f) $('.rotate-container').transition({scale:'-=.01'},9);
+    if (mov.t) $('.rotate-container').transition({scale:'+=.01'},9);
+    if (mov.g) $('.rotate-container').transition({scale:'-=.01'},9);
   },10);
   
   // Moving with mouse
