@@ -84,35 +84,34 @@
     
     <!-- 3d editor -->
     <style>
-    #toggle-bar {
-      background:rgba(0,0,0,.5);
-      position:fixed;
-      padding:5px;
-      color:white;
-      right:5px;
-      top:5px;
-      z-index:10000;
-    }
+    #toggle-bar { background:rgba(0,0,0,.5);position:fixed;padding:5px;color:white; }
+    #toggle-bar { right:10px;top:10px;z-index:10000; }
+    #toggle-bar form:not(:first-child) { margin-top:15px; }
+    #toggle-bar form fieldset > * { vertical-align:middle;margin:0; }
+    #toggle-bar form fieldset label { font-weight:normal;padding-left:5px; }
     </style>
     <div id="toggle-bar"></div>
-
-    <script>function toggle3d(v){
-      var par = v.children('div')
-        , elm = par.children()
+    <script>function toggle3d(a){
+      var f = a.children('div')
       
-      $('#toggle-bar').append('<form><p><b>'+par.attr('class')+'</b></p></form>')
-      
-      $.each(elm,function(i,v){
-	var cls = $(v).attr('class')
-	$('#toggle-bar form').append(
-	  '<fieldset><input class="layer" checked type="checkbox" value="'+cls+'"><label>'+cls+'</label></fieldset>'
-	)
+      $.each(f,function(b,c){
+	var g = $(c).children()
+	  , k = $(c).attr('class')
+	
+	var h = $('#toggle-bar').append('<form><p><b>'+k+'</b></p></form>').find('form:last-child')
+	
+	$.each(g,function(d,e){
+	  var i = $(e).attr('class')
+	  h.append(
+	    '<fieldset><input class="layer" checked type="checkbox" value=".'+
+	    k.split(' ').join('.')+' .'+i+'"><label>'+i+'</label></fieldset>'
+	  )
+	})
       })
 
-      $('input.layer').change(function(){
-	var cls = $(this).val()
-	
-	$('.'+cls).toggle()
+      $('input.layer').unbind('change').change(function(){
+	var j = $(this).val()
+	$('#V .slider .slide.html').find(j).toggle()
       })
     }</script>
   </body>

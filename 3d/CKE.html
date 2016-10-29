@@ -1,11 +1,16 @@
 <style>
+.all *
+{ transition:all 1s}
+
 .all,
 .stage .component,
 .box .floor,
 .box,
 .boomboxes,
 .wires,
-.lights
+.lights,
+.wheels,
+.car
 { position:relative }
 
 .stage .component svg,
@@ -16,15 +21,45 @@
 .box [class^="wall"],
 .boomboxes > *,
 .lights > *,
+.wheels > *,
 .boomboxes .boombox > div,
-.lights .light > div
+.lights .light > div,
+.wheels .wheel div,
+.car div
 { position:absolute }
 
-.all { transform:translate(450px,253px) rotateX(90deg); }
+.all.a1 { transform:translate(450px,253px) rotateX(90deg); }
+.all.a2 { transform:translate(450px,253px) rotateX(90deg) translateX(-1100px); }
+
+.all:not(.closed) * { opacity:1 }
+
+.closed .lights,
+.closed .boomboxes,
+.closed .wires,
+.closed .wall-behind-down,
+.closed .wheels > .front,
+.closed .box .wall-right div:before,
+.closed .box .wall-left div:before
+{ opacity:0; }
+
+.closed .stage .component.a2 { transform: translate3d(0,0,20px); }
+.closed .stage .component.a3 { transform: translate3d(0,0,40px); }
+
+.closed .box .wall-up div { height:200px; }
+.closed .box .wall-up { transform:translate3d(0,0,190px); }
+
+.closed .box .wall-behind { transform-origin:0 0;transform:translate3d(0,0,190px) }
+.closed .box .wall-behind div.front { transform-origin:0 0;transform:translateY(10px) rotateX(-90deg); }
+.closed .box .wall-behind div.behind { transform-origin:0 0;transform:rotateX(-90deg); }
+.closed .box .wall-behind div { width:600px;height:200px; }
+
+.closed .box .wall-front {
+  border:none;opacity:.5;
+  background:#737373
+}
 
 .stage { transform:translate3d(-200px,-100px,20px); }
 
-.stage .component.a1 {}
 .stage .component.a2 { transform: translate3d(0,-50px,20px); }
 .stage .component.a3 { transform: translate3d(0,-100px,40px); }
 
@@ -112,7 +147,7 @@
 .box .floor div { width:600px;height:200px; }
 
 .box .wall-left div,
-.box .wall-right div { width:270px;height:200px; }
+.box .wall-right div { width:200px;height:200px; }
 
 .box .wall-left div:before,
 .box .wall-right div:before { content:'';display:block;border-style: solid;border-width: 0 0 100px 100px; }
@@ -122,13 +157,23 @@
 .box .wall-left div.right:before,
 .box .wall-right div.left:before { border-color: transparent transparent #a6a6a6 transparent; }
 
-.box .wall-front { width:600px;height:270px;border:10px solid; }
+.box .wall-front { width:600px;height:200px;border:10px solid; }
 
 .box .wall-up div { width:600px;height:300px; }
 
 .box .wall-behind-down div { width:600px;height:141px; }
+.box .wall-behind div { width:600px;height:100px; }
 
-.box .wall-behind div { width:600px;height:170px; }
+.box .wall-behind .front:before { opacity:.5; }
+.box .wall-behind .behind:before { transform:scaleX(-1); }
+.box .wall-behind div:before {
+  content:'';
+  display:block;
+  width:100%;
+  height:100%;
+  background: url('3d/img/cke-centrum-voor-de-kunsten-eindhoven.jpg');
+  background-size:200px auto;
+}
 
 .box .floor div.down { transform:translateZ(-10px) }
 
@@ -143,9 +188,9 @@
 .box .wall-left div:before,
 .box .wall-right div:before { transform: translateY(-100px); }
 
-.box .wall-front { transform-origin:0 0;transform:rotateX(90deg) translate3d(0,-10px,-200px); }
+.box .wall-front { transform-origin:0 0;transform:rotateX(-90deg) translate3d(0,-190px,200px); }
 
-.box .wall-up { top:0;transform:translate3d(0,-100px,260px); }
+.box .wall-up { top:0;transform:translate3d(0,-100px,190px); }
 
 .box .wall-up div.down { transform:translateZ(-10px); }
 
@@ -153,8 +198,8 @@
 .box .wall-behind-down div.front { transform-origin:0 0;transform:rotateX(135deg); }
 .box .wall-behind-down div.behind { transform-origin:0 0;transform:rotateX(135deg) translate3d(0,-7.07106781px,7.07106781px); }
 
-.box .wall-behind div.front { transform-origin:0 0;transform:translate3d(0,-90px,260px) rotateX(-90deg); }
-.box .wall-behind div.behind { transform-origin:0 0;transform:translate3d(0,-100px,260px) rotateX(-90deg); }
+.box .wall-behind div.front { transform-origin:0 0;transform:translate3d(0,-90px,190px) rotateX(-90deg); }
+.box .wall-behind div.behind { transform-origin:0 0;transform:translate3d(0,-100px,190px) rotateX(-90deg); }
 
 .boomboxes .boombox div.up,
 .boomboxes .boombox div.right,
@@ -223,16 +268,510 @@
 .lights .light div.at-left { transform-origin:1px 0;transform:rotateX(90deg) translate3d(6px,0,-8px) rotateY(90deg); }
 .lights .light div.at-right { transform-origin:1px 0;transform:rotateX(90deg) translate3d(8px,0,-8px) rotateY(90deg); }
 
-.lights .light.a1 { transform:translate3d(-240px,-200px,220px); }
-.lights .light.a2 { transform:translate3d(-80px,-200px,220px); }
-.lights .light.a3 { transform:translate3d(80px,-200px,220px); }
-.lights .light.a4 { transform:translate3d(240px,-200px,220px); }
+.lights .light.a1 { transform:translate3d(-240px,-200px,150px); }
+.lights .light.a2 { transform:translate3d(-80px,-200px,150px); }
+.lights .light.a3 { transform:translate3d(80px,-200px,150px); }
+.lights .light.a4 { transform:translate3d(240px,-200px,150px); }
 
 .wires { width:600px;height:200px;background:url('3d/img/wires.png');background-size:cover;
   transform:translate3d(-300px,-170px,1px); }
+
+.wheels > .front {
+  background:#333333;
+  width:600px;
+  height:50px;
+  transform:rotateX(-90deg) translate3d(-300px,35px,25px);
+}
+
+.wheels .wheel.a1 { transform:translate3d(-250px,    0  ,-35px); }
+.wheels .wheel.a2 { transform:translate3d(-250px, -125px,-35px); }
+.wheels .wheel.a3 { transform:translate3d( 225px,    0  ,-35px); }
+.wheels .wheel.a4 { transform:translate3d( 225px, -125px,-35px); }
+.wheels .wheel.a5 { transform:translate3d( 550px,    0  ,-35px); }
+.wheels .wheel.a6 { transform:translate3d( 550px, -125px,-35px); }
+.wheels .wheel.a7 { transform:translate3d( 375px,    0  ,-35px); }
+.wheels .wheel.a8 { transform:translate3d( 375px, -125px,-35px); }
+
+.wheels .wheel .behind,
+.wheels .wheel .front {
+  width:50px;
+  height:50px;
+  border-radius:50px;
+  border: 10px solid #333333;
+  background: #cccccc;
+  box-shadow:inset 0 0 5px black;
+}
+
+.wheels .wheel .arc div { width:7px;height:20px;background:#333333; }
+
+.wheels .wheel .front { transform:rotateX(-90deg); }
+.wheels .wheel .behind { transform:rotateX(-90deg) translateZ(-20px); }
+.wheels .wheel .arc { transform:translate3d(21.5px,5px,0); }
+
+.wheels .wheel .arc .a1 { transform:rotateY(0deg) translateZ(25px); }
+.wheels .wheel .arc .a2 { transform:rotateY(15deg) translateZ(25px); }
+.wheels .wheel .arc .a3 { transform:rotateY(30deg) translateZ(25px); }
+.wheels .wheel .arc .a4 { transform:rotateY(45deg) translateZ(25px); }
+.wheels .wheel .arc .a5 { transform:rotateY(60deg) translateZ(25px); }
+.wheels .wheel .arc .a6 { transform:rotateY(75deg) translateZ(25px); }
+.wheels .wheel .arc .a7 { transform:rotateY(90deg) translateZ(25px); }
+.wheels .wheel .arc .a8 { transform:rotateY(105deg) translateZ(25px); }
+.wheels .wheel .arc .a9 { transform:rotateY(120deg) translateZ(25px); }
+.wheels .wheel .arc .a10 { transform:rotateY(135deg) translateZ(25px); }
+.wheels .wheel .arc .a11 { transform:rotateY(150deg) translateZ(25px); }
+.wheels .wheel .arc .a12 { transform:rotateY(165deg) translateZ(25px); }
+.wheels .wheel .arc .a13 { transform:rotateY(180deg) translateZ(25px); }
+.wheels .wheel .arc .a14 { transform:rotateY(-165deg) translateZ(25px); }
+.wheels .wheel .arc .a15 { transform:rotateY(-150deg) translateZ(25px); }
+.wheels .wheel .arc .a16 { transform:rotateY(-135deg) translateZ(25px); }
+.wheels .wheel .arc .a17 { transform:rotateY(-120deg) translateZ(25px); }
+.wheels .wheel .arc .a18 { transform:rotateY(-105deg) translateZ(25px); }
+.wheels .wheel .arc .a19 { transform:rotateY(-90deg) translateZ(25px); }
+.wheels .wheel .arc .a20 { transform:rotateY(-75deg) translateZ(25px); }
+.wheels .wheel .arc .a21 { transform:rotateY(-60deg) translateZ(25px); }
+.wheels .wheel .arc .a22 { transform:rotateY(-45deg) translateZ(25px); }
+.wheels .wheel .arc .a23 { transform:rotateY(-30deg) translateZ(25px); }
+.wheels .wheel .arc .a24 { transform:rotateY(-15deg) translateZ(25px); }
+
+.car { transform:translate3d(335px,-150px,-10px); }
+
+.car .up { background:#b3b3b3 }
+.car .down { background:#666666 }
+.car .left { background:#999999 }
+.car .right { background:#999999 }
+.car .right-up { background:#999999 }
+.car .front-left { background:#a6a6a6 }
+.car .behind-left { background:#a6a6a6 }
+.car .front { border-color:transparent transparent #a6a6a6 #a6a6a6; }
+.car .behind { border-color:transparent transparent #a6a6a6 #a6a6a6; }
+
+.car div
+{ height:200px; }
+
+.car .front-left,
+.car .behind-left,
+.car .left,
+.car .up { width:200px }
+.car .right { width:100px }
+.car .right-up { width:141px }
+.car .down { width:300px }
+
+.car .front,
+.car .behind { background:transparent;border-style:solid;border-width:100px 0 100px 100px; }
+
+.car .up { transform:translateZ(200px); }
+.car .left { transform-origin:0 50%;transform:rotateY(-90deg); }
+.car .right { transform-origin:100% 50%;transform:translateX(200px) rotateY(90deg); }
+.car .right-up { transform-origin:100% 50%;transform:translate3d(159px,0,100px) rotateY(45deg); }
+.car .front-left { transform-origin:50% 100%;transform:rotateX(-90deg) }
+.car .behind-left { transform-origin:50% 0;transform:rotateX(90deg) }
+.car .front { transform-origin:0 0;transform:translate3d(200px,200px,200px) rotateX(-90deg) }
+.car .behind { transform-origin:0 0;transform:translate3d(200px,0,200px) rotateX(-90deg) }
+
 </style>
 
-<div class="all">
+<div class="all a1">
+  
+  <div class="car">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="right-up"></div>
+    <div class="behind-left"></div>
+    <div class="behind"></div>
+    <div class="up"></div>
+    <div class="down"></div>
+    <div class="front-left"></div>
+    <div class="front"></div>
+  </div>
+  
+  <div class="wheels">
+    <div class="front"></div>
+    <div class="wheel a1">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a2">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a3">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a4">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a5">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a6">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a7">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a8">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="box">
+    <div class="floor">
+      <div class="up"></div>
+      <div class="down"></div>
+    </div>
+    <div class="wall-left">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+    <div class="wall-right">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+    <div class="wall-front"></div>
+    <div class="wall-up">
+      <div class="up"></div>
+      <div class="down"></div>
+    </div>
+    <div class="wall-behind">
+      <div class="front"></div>
+      <div class="behind"></div>
+    </div>
+    <div class="wall-behind-down">
+      <div class="front"></div>
+      <div class="behind"></div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="component a1">
+      <svg class="up" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+      <svg class="down" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+      <div class="left"></div>
+      <div class="right"></div>
+      <svg class="front" viewport="0 0 20 400" width="20" height="400"><path d="m0 0 h20 v50 h-20 z m0 400 v-50 h20 v50 z"></path></svg>
+      <div class="behind"></div>
+      <div class="behind-arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+      </div>
+      <div class="front-arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+      </div>
+    </div>
+    <div class="component a2">
+      <svg class="up" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+      <svg class="down" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+      <div class="left"></div>
+      <div class="right"></div>
+      <svg class="front" viewport="0 0 20 400" width="20" height="400"><path d="m0 0 h20 v50 h-20 z m0 400 v-50 h20 v50 z"></path></svg>
+      <div class="behind"></div>
+      <div class="behind-arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+      </div>
+      <div class="front-arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+      </div>
+    </div>
+    <div class="component a3">
+      <svg class="up" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+      <svg class="down" viewport="0 0 400 100" width="400" height="100"><path d="M0 100 h50 a400,400,0,0,1,300,0 h50 v-60 h-50 a400,400,0,0,0,-300,0 h-50 v60 Z"></path></svg>
+      <div class="left"></div>
+      <div class="right"></div>
+      <svg class="front" viewport="0 0 20 400" width="20" height="400"><path d="m0 0 h20 v50 h-20 z m0 400 v-50 h20 v50 z"></path></svg>
+      <div class="behind"></div>
+      <div class="behind-arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+      </div>
+      <div class="front-arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+      </div>
+    </div>
+  </div>
 
   <div class="wires"></div>
   
@@ -348,6 +887,266 @@
       <div class="front"></div>
       <div class="behind"></div>
       <div class="front circle"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="all a2 closed">
+  
+  <div class="car">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="right-up"></div>
+    <div class="behind-left"></div>
+    <div class="behind"></div>
+    <div class="up"></div>
+    <div class="down"></div>
+    <div class="front-left"></div>
+    <div class="front"></div>
+  </div>
+  
+  <div class="wheels">
+    <div class="front"></div>
+    <div class="wheel a1">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a2">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a3">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a4">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a5">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a6">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a7">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
+    </div>
+    <div class="wheel a8">
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="arc">
+	<div class="a1"></div>
+	<div class="a2"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<div class="a5"></div>
+	<div class="a6"></div>
+	<div class="a7"></div>
+	<div class="a8"></div>
+	<div class="a9"></div>
+	<div class="a10"></div>
+	<div class="a11"></div>
+	<div class="a12"></div>
+	<div class="a13"></div>
+	<div class="a14"></div>
+	<div class="a15"></div>
+	<div class="a16"></div>
+	<div class="a17"></div>
+	<div class="a18"></div>
+	<div class="a19"></div>
+	<div class="a20"></div>
+	<div class="a21"></div>
+	<div class="a22"></div>
+	<div class="a23"></div>
+	<div class="a24"></div>
+      </div>
     </div>
   </div>
 
@@ -493,6 +1292,123 @@
 	<div class="a12"></div>
 	<div class="a13"></div>
       </div>
+    </div>
+  </div>
+
+  <div class="wires"></div>
+  
+  <div class="lights">
+    <div class="light a1">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="front"></div>
+      <div class="front-flare"></div>
+      <div class="behind"></div>
+      <div class="at-front"></div>
+      <div class="at-behind"></div>
+      <div class="at-left"></div>
+      <div class="at-right"></div>
+    </div>
+    
+    <div class="light a2">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="front"></div>
+      <div class="front-flare"></div>
+      <div class="behind"></div>
+      <div class="at-front"></div>
+      <div class="at-behind"></div>
+      <div class="at-left"></div>
+      <div class="at-right"></div>
+    </div>
+    
+    <div class="light a3">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="front"></div>
+      <div class="front-flare"></div>
+      <div class="behind"></div>
+      <div class="at-front"></div>
+      <div class="at-behind"></div>
+      <div class="at-left"></div>
+      <div class="at-right"></div>
+    </div>
+    
+    <div class="light a4">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="front"></div>
+      <div class="front-flare"></div>
+      <div class="behind"></div>
+      <div class="at-front"></div>
+      <div class="at-behind"></div>
+      <div class="at-left"></div>
+      <div class="at-right"></div>
+    </div>
+  </div>
+  
+  <div class="boomboxes">
+    <div class="boombox a1">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="front circle"></div>
+    </div>
+    <div class="boombox a2">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="front circle"></div>
+    </div>
+    <div class="boombox a3">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="front circle"></div>
+    </div>
+    <div class="boombox a4">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="front circle"></div>
+    </div>
+    <div class="boombox a5">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="front circle"></div>
+    </div>
+    <div class="boombox a6">
+      <div class="up"></div>
+      <div class="down"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="front"></div>
+      <div class="behind"></div>
+      <div class="front circle"></div>
     </div>
   </div>
 

@@ -3,12 +3,32 @@ var OOAccount = {
   cover:"http://www.wall321.com/thumbnails/detail/20121107/android%20google%20android%20jelly%20bean%201920x1080%20wallpaper_www.wall321.com_26.jpg",
   slideshowdata:[
     {
-      title:'Een Podium Voor het CKE',
+      title:'Een Podium Voor Het CKE',
       sta:1,
       load:'puzzle',
-      style:'dev2',
+      style:'puzzle-light',
       type:'puzzle',
       slides:[
+	{
+	  kind:'none',
+	  type:'none',
+	  pos:{x:'-1000px',rx:10}
+	},
+	{
+	  kind:'none',
+	  type:'none',
+	  pos:{x:'0',rx:10}
+	},
+	{
+	  kind:'none',
+	  type:'none',
+	  pos:{x:'0',z:'-400px',ry:180,rx:10}
+	},
+	{
+	  kind:'none',
+	  type:'none',
+	  pos:{x:'-1000px',z:'-400px',ry:180,rx:10}
+	},
 	{
 	  kind:'html',
 	  type:'html',hide:true,

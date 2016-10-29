@@ -397,8 +397,10 @@ window.addEventListener('load',function(){
     if (ek==36||ek==40) prevSlide(true);	// ∨ or Home 
     if (ek==35||ek==38) nextSlide(true);	// ∧ or End 
     if (ek==81) currentSlide();			// Q 
-    if (ek==89) showXs(!showXs())		// Y 
-    if (ek==67) $('#toggle-bar').toggle()	// C 
+    
+    if (ek==49) showXs(!showXs())		// 1 
+    if (ek==50) $('#toggle-bar').toggle()	// 2
+    if (ek==51) $(window).resize()		// 3 
 
     // Moving, rotating, etc. 
     if (ek==65) mov.a=1;			// A 
@@ -423,8 +425,11 @@ window.addEventListener('load',function(){
     if (ek==16) mov.shft=1;			// Shft
 
     // Handeling
-    if (mov.ctr&&mov.shft&&mov.hud) { hideHUD(true); mov.h=0; }
-    else if (mov.ctr&&mov.shft&&!mov.hud) { hideHUD(false); mov.h=1; }
+    if (mov.ctr
+     && mov.shft) {
+      hideHUD(!mov.hud);
+      mov.hud=!mov.hud*1;
+    }
   });
    
   $("body").keyup(function(e) {

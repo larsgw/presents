@@ -13,7 +13,7 @@ function displaySlides(slideshow){
   
   document.title=slideshow.title+' - Presentatie';
   $('#V .title' ).html(slideshow.title);
-  if(puzzle)$('#V .slider').html(
+  if(puzzle)$('#V').addClass(slideshow.style||'dev2').find('.slider').html(
     '<div class="rotate-container">'+
       '<div class="y-axis axis"></div>'+
       '<div class="x-axis axis"></div>'+
@@ -45,7 +45,7 @@ function displaySlides(slideshow){
     });
   }
   
-  $('#V div.slider').addClass(load+'load');
+  $('#V div.slider').addClass(load+'load')
   
   hljs.configure({tabReplace:'    '});
   hljs.initHighlighting.called = false;
@@ -110,12 +110,10 @@ function alignEdit() {
 
 function hideHUD(a) {
   if (a) {
-    mov.hud=0;
     $('#V header').transition({top   : 0 });
     $('#V footer').transition({bottom: 0 });
   }
   else {
-    mov.hud=1;
     $('#V header').transition({top   :-62});
     $('#V footer').transition({bottom:-62});
   }
