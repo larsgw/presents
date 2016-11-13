@@ -258,42 +258,45 @@ $(document).ready(function(){
   
   /* Keyboard shortcut handeling */
   
-  $('#V').keydown(function(e) {
-    ek = e.keyCode;
-    if (/*ek!=34&&ek!=37&&*/ek!=32&&ek!=33&&ek!=39/*&&ek!=36&&ek!=40&&ek!=35&&ek!=38&&ek!=81*/)
-      $('.slide').removeClass('path');
-    if (ek==34||ek==37) prevSlide();		// < or Pg down 
-    if (ek==32||ek==33||ek==39) nextSlide();	// > or Pg up or space 
-    if (ek==36||ek==40) prevSlide(true);	// ∨ or Home 
-    if (ek==35||ek==38) nextSlide(true);	// ∧ or End 
-    if (ek==81) currentSlide();			// Q 
-
-    // Moving, rotating, etc. 
-    if (ek==65) mov.a=1;			// A 
-    if (ek==68) mov.d=1;			// D 
-    if (ek==87) mov.s=1;			// S 
-    if (ek==83) mov.w=1;			// W 
-    if (ek==90) mov.x=1;			// X 
-    if (ek==88) mov.z=1;			// Z 
-		    
-    if (ek==74) mov.j=1;			// J 
-    if (ek==76) mov.l=1;			// L 
-    if (ek==73) mov.i=1;			// K 
-    if (ek==75) mov.k=1;			// I 
-    if (ek==84) mov.t=1;			// T 
-    if (ek==71) mov.g=1;			// G 
-		    
-    if (ek==82) mov.r=1;			// R 
-    if (ek==70) mov.f=1;			// F
-
-    // Other things
-    if (ek==17) mov.ctr=1;			// Ctrl
-    if (ek==16) mov.shft=1;			// Shft
-
-    // Handeling
-    if (mov.ctr&&mov.shft&&mov.hud) { hideHUD(true); mov.h=0; }
-    else if (mov.ctr&&mov.shft&&!mov.hud) { hideHUD(false); mov.h=1; }
-  });
+//   $('#V').keydown(function(e) {
+//     ek = e.keyCode;
+//     if (/*ek!=34&&ek!=37&&*/ek!=32&&ek!=33&&ek!=39/*&&ek!=36&&ek!=40&&ek!=35&&ek!=38&&ek!=81*/)
+//       $('.slide').removeClass('path');
+//     if (ek==34||ek==37) prevSlide();		// < or Pg down 
+//     if (ek==32||ek==33||ek==39) nextSlide();	// > or Pg up or space 
+//     if (ek==36||ek==40) prevSlide(true);	// ∨ or Home 
+//     if (ek==35||ek==38) nextSlide(true);	// ∧ or End 
+//     if (ek==81) currentSlide();			// Q 
+//     
+//     // Moving, rotating, etc. 
+//     if (ek==65) mov.a=1;			// A 
+//     if (ek==68) mov.d=1;			// D 
+//     if (ek==87) mov.s=1;			// S 
+//     if (ek==83) mov.w=1;			// W 
+//     if (ek==90) mov.x=1;			// X 
+//     if (ek==88) mov.z=1;			// Z 
+// 		    
+//     if (ek==74) mov.j=1;			// J 
+//     if (ek==76) mov.l=1;			// L 
+//     if (ek==73) mov.i=1;			// K 
+//     if (ek==75) mov.k=1;			// I 
+//     if (ek==84) mov.t=1;			// T 
+//     if (ek==71) mov.g=1;			// G 
+// 		    
+//     if (ek==82) mov.r=1;			// R 
+//     if (ek==70) mov.f=1;			// F
+// 
+//     // Other things
+//     if (ek==17) mov.ctr=1;			// Ctrl
+//     if (ek==16) mov.shft=1;			// Shft
+//     if (ek==80) mov.p=1;			// P 
+// 
+//     // Handeling
+//     if (mov.ctr&&mov.p) printShow()
+//     
+//     if (mov.ctr&&mov.shft&&mov.hud) { hideHUD(true); mov.h=0; }
+//     else if (mov.ctr&&mov.shft&&!mov.hud) { hideHUD(false); mov.h=1; }
+//   });
   
   /*$('.slider').draggable({
     revert:true,

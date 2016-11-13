@@ -1,3 +1,27 @@
+function printShow() {
+  var win = window.open('','printwindow');
+  win.document.open()
+  win.document.write(
+    '<html><head><title>Print the handout - '+document.title+'</title>'+
+      '<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">'+
+      '<link rel="stylesheet" type="text/css" href="css/bootstrap.css">'+
+      '<link rel="stylesheet" type="text/css" href="css/standard.css">'+
+      '<link rel="stylesheet" type="text/css" href="css/font.css">'+
+      '<link rel="stylesheet" type="text/css" href="css/slides.css">'+
+      '<link rel="stylesheet" type="text/css" href="css/theme.css">'+
+    '</head><body>');
+  var slides = $('.slider').clone();
+  if(slides.hasClass('puzzleload')){
+    var cnt = slides.find('.slides').contents();
+    slides.find('.rotate-container').replaceWith(cnt);
+    slides.find('.slide.none,.slide.html').remove();
+  }
+  win.document.write(slides.prop('outerHTML'));
+  win.document.write('</body></html>');
+  win.print();
+  win.close();
+}
+
 function parseRichText(a) {
   var a=a
   //Inline
@@ -423,6 +447,7 @@ window.addEventListener('load',function(){
     // Other things
     if (ek==17) mov.ctr=1;			// Ctrl
     if (ek==16) mov.shft=1;			// Shft
+//     if (ek==80) mov.p=1;			// P 
 
     // Handeling
     if (mov.ctr
@@ -430,6 +455,7 @@ window.addEventListener('load',function(){
       hideHUD(!mov.hud);
       mov.hud=!mov.hud*1;
     }
+//     if (mov.p) printShow()
   });
    
   $("body").keyup(function(e) {
@@ -456,6 +482,7 @@ window.addEventListener('load',function(){
     // Other things
     if (ek==17) mov.ctr=0;			// Ctrl
     if (ek==16) mov.shft=0;			// Shft
+//     if (ek==80) mov.p=0;			// P 
   });
   
   setInterval(function () {

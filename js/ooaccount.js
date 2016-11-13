@@ -4,11 +4,82 @@ var OOAccount = {
   slideshowdata:[
     {
       title:'Een Podium Voor Het CKE',
-      sta:1,
+      sta:5,
       load:'puzzle',
       style:'puzzle-light',
       type:'puzzle',
       slides:[
+	/*[o] opening: titel, naam
+	  [o] muziekstijlen + keuze
+	  [o] type podium + keuze
+	  [ ] constructietechnieken
+	      ontwerp:
+	  [ ]   fr2
+	  [ ]   fr1
+	  [ ]   technische tekeningen
+	 */
+	{
+	  type:'title',
+	  title:'Een&nbsp;Podium&nbsp;voor het&nbsp;CKE',
+	  subtitle:'<span style="font-size:.75em;">door Stef, Rob, Koen en Lars</span>',
+	  pos:{z:'900px',y:'-100px',ry:-90}
+	},
+	{
+	  type:'content-right',
+	  title:'Muziekstijlen',
+	  list:{items:[
+	    'Klassiek &#8594; muziektheorie centraal',
+	    'Rap &amp; hiphop &#8594; tekst centraal: ritmisch, maar niet altijd melodisch',
+	    'Indie &#8594; overkoepelend: experimenteel'
+	  ]},
+	  html:'<div style="border-bottom:1px solid;"></div><h4>Keuze</h4><p>Klassieke muziek</p><ul>'+
+	    '<li>Vorm podium</li>'+
+	    '<li>Uitdaging</li>'+
+	  '</ul>',
+	  elm:[{typ:'img',caption:'Passenger album cover',src:'cke/fig1.jpg'}],
+	  pos:{z:'2000px',y:'-100px',ry:-90}
+	},
+	{
+	  type:'content-right',
+	  title:'Type Podia',
+	  list:{items:[
+	    {title:'Aanhangwagen',
+	    items:['+ eenvoudig op te zetten','- veel ongebruikte ruimte']},
+	    {title:'Losse onderdelen',
+	    items:['+ weinig ongebruikte ruimte','- ingewikkeld om op te zetten']},
+	    {title:'Combinatie',
+	    items:['+- redelijk weinig ongebruikte ruimte','+- redelijk eenvoudig op te zetten']},
+	    {title:'Opblaasbaar podium',
+	    items:['+ eenvoudig op te zetten','+ weinig ongebruikte ruimte','- niet mooi','- slecht voor geluid']},
+	  ]},
+	  elm:[{typ:'img',caption:'Opblaasbaar podium',src:'cke/fig2.jpg'}],
+	  pos:{z:'3100px',y:'-100px',ry:-90}
+	},
+	{
+	  title:'Keuze Podium: Volautomatische combinatie',
+	  list:{items:[
+	    'Eenvoudig op te zetten',
+	    'Weinig ongebruikte ruimte',
+	    'Zo mooi als wij het maken'
+	  ]},
+	  pos:{z:'4200px',y:'-100px',ry:-90}
+	},
+	{
+	  type:'content',
+	  title:'Muren pt. 1 - Rob',
+	  pos:{x:'10cm'},
+	  elm:[
+	    {h:'100%',c:'fr2',type:'video',src:'cke/fr2.ogv'}
+	  ],
+	  comp:function(){
+	    $('.fr2')[0].currentTime=0;
+	    $('.fr2').on('ended',function(){
+	      this.pause();
+	      this.currentTime-=.1;
+	    })[0].play();
+	  },
+	  pos:{z:'4200px',y:'-100px',ry:-90}
+	},
 	{
 	  kind:'none',
 	  type:'none',

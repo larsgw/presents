@@ -89,16 +89,16 @@ var adminAccount = {
 	  'con':[
 	    {'title':'Issues:',
 	    'list':{items:[
-	      'The slide-hiding mechanism isn\'t perfect yet - but hey: it exists!',
-	      'Lack of perspective (the way to do it looks shitty)'
+	      'The slide-hiding mechanism isn\'t perfect yet - but hey: it exists!'
 	    ]}},
 	    {'title':'Solved Issues:',
 	    'list':{'title':'Solved issues','items':[
+	      'Perspective fixed; applied to .slider',
 	      'Scaling does work proportionally (Fixed by changing the library)',
 	      'You can now toggle the axes',
 	      'You now have the option to make slides invisible on the backside - just like this one',
 	      'You now have the option to put ordered lists in slides',
-	      'Slides now appear in order - let\'s hope it stay that way!',
+	      'Slides now appear in order - let\'s hope it stays that way!',
 	      'You now have the option to pass a function to execute when the slide has appeared',
 	      'Slides never cover slides anymore!',
 	      'Implemented!',
