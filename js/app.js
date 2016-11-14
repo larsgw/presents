@@ -210,6 +210,7 @@ function getMediaContainer(elm,embed) {
 	
       slide+='<'+a;
       if (c.h) slide+=' height="'+c.h+'"';
+      if (c.w) slide+='  style="width:'+c.w+'"';
       if (c.c) slide+='  class="'+c.c+'"';
       if (c.p) slide+=' poster="'+c.p+'"';
       slide+=' src="'+(c.src||'https://placehold.it/300x150')+'" '+b;

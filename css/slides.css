@@ -106,7 +106,7 @@
 }
 
 .slide .slide-container {
-  margin:0;width:100%;
+  margin:0;width:100%;height:100%;
   font-size:1em;
   
   -webkit-flex:1;
@@ -171,7 +171,7 @@
 .slide:not(.html):not(.none) { white-space:pre-wrap; }
 
 .slide .title-container h1,
-.slide .title-container h2         {font-size:5.1em;}
+.slide .title-container h2         {font-size:30px;}/*5.1*/
 .slide .title-container h2:before  {font-size:inherit;content:' ';}
 
 .slide .slide-container  :first-child
@@ -189,7 +189,7 @@
 .slide .slide-container figure video,
 .slide .slide-container figure embed,
 .slide .slide-container figure iframe           { width:100%;float:left;object-fit:cover;position:relative;z-index:219;border:0;-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0); }
-.slide .slide-container figure figcaption       { font-style:italic;font-size:1.95em;-webkit-flex:1;flex:1;margin-top:10px;padding:2px 5px 2px 5px; }
+.slide .slide-container figure figcaption       { font-style:italic;font-size:10px/*1.95em*/;-webkit-flex:1;flex:1;margin-top:10px;padding:2px 5px 2px 5px; }
 .slide .slide-container figure figcaption cite  { font-style:normal; } #V
 .slide .slide-container figure figcaption:empty { display:none; }
 

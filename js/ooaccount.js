@@ -4,7 +4,7 @@ var OOAccount = {
   slideshowdata:[
     {
       title:'Een Podium Voor Het CKE',
-      sta:5,
+      sta:7,
       load:'puzzle',
       style:'puzzle-light',
       type:'puzzle',
@@ -12,10 +12,10 @@ var OOAccount = {
 	/*[o] opening: titel, naam
 	  [o] muziekstijlen + keuze
 	  [o] type podium + keuze
-	  [ ] constructietechnieken
+	  [x] constructietechnieken
 	      ontwerp:
-	  [ ]   fr2
-	  [ ]   fr1
+	  [o]   fr2
+	  [o]   fr1
 	  [ ]   technische tekeningen
 	 */
 	{
@@ -66,8 +66,7 @@ var OOAccount = {
 	},
 	{
 	  type:'content',
-	  title:'Muren pt. 1 - Rob',
-	  pos:{x:'10cm'},
+	  title:'Ontwerp pt. 1 - Rob',
 	  elm:[
 	    {h:'100%',c:'fr2',type:'video',src:'cke/fr2.ogv'}
 	  ],
@@ -78,26 +77,69 @@ var OOAccount = {
 	      this.currentTime-=.1;
 	    })[0].play();
 	  },
-	  pos:{z:'4200px',y:'-100px',ry:-90}
+	  pos:{z:'5300px',y:'-100px',ry:-90}
+	},
+	{
+	  type:'content',
+	  title:'Ontwerp pt. 2 - Rob',
+	  elm:[
+	    {h:'100%',w:'auto',c:'fr1',type:'video',src:'cke/fr1.ogv'}
+	  ],
+	  comp:function(){
+	    $('.fr1')[0].currentTime=0;
+	    $('.fr1').on('ended',function(){
+	      this.pause();
+	      this.currentTime-=.1;
+	    })[0].play();
+	  },
+	  pos:{z:'6400px',y:'-100px',ry:-90}
+	},
+	{
+	  type:'content',
+	  title:'Ontwerp pt. 3 - Rob',
+	  elm:[
+	    {h:'100%',type:'img',src:'cke/fig3.png'}
+// 	    {h:'100%',type:'img',src:'cke/fr1.ogv'}
+	  ],
+	  pos:{z:'7500px',y:'-100px',ry:-90}
+	},
+	{
+	  type:'content',
+	  title:'Ontwerp pt. 4 - Rob',
+	  elm:[
+	    {h:'100%',type:'img',src:'cke/fig4.png'}
+// 	    {h:'100%',type:'img',src:'cke/fr1.ogv'}
+	  ],
+	  hide:true,
+	  pos:{z:'7500px',y:'-100px',ry:-90}
 	},
 	{
 	  kind:'none',
 	  type:'none',
+	  pos:{z:'7500px',x:'-500px',y:'-100px',ry:-10}
+	},
+	{
+	  kind:'none',
+	  type:'none',
+	  hide:true,
 	  pos:{x:'-1000px',rx:10}
 	},
 	{
 	  kind:'none',
 	  type:'none',
+	  hide:true,
 	  pos:{x:'0',rx:10}
 	},
 	{
 	  kind:'none',
 	  type:'none',
+	  hide:true,
 	  pos:{x:'0',z:'-400px',ry:180,rx:10}
 	},
 	{
 	  kind:'none',
 	  type:'none',
+	  hide:true,
 	  pos:{x:'-1000px',z:'-400px',ry:180,rx:10}
 	},
 	{
