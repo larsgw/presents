@@ -204,7 +204,7 @@
 .slide[data-slide-type=title] .title-container h1,
 .slide[data-slide-type=title] .title-container h2 { width:calc(100% - 1.176em);text-align:center;display:inline-block;position:absolute; }
 .slide[data-slide-type=title] .title-container h1 { bottom:50%; }
-.slide[data-slide-type=title] .title-container h2 { top:50%;font-size:3.7em; }
+.slide[data-slide-type=title] .title-container h2 { top:50%;font-size:30px/*3.7em*/; }
 
 /* When slide-type is: default */
   

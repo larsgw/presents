@@ -4,20 +4,11 @@ var OOAccount = {
   slideshowdata:[
     {
       title:'Een Podium Voor Het CKE',
-      sta:7,
+      sta:1,
       load:'puzzle',
       style:'puzzle-light',
       type:'puzzle',
       slides:[
-	/*[o] opening: titel, naam
-	  [o] muziekstijlen + keuze
-	  [o] type podium + keuze
-	  [x] constructietechnieken
-	      ontwerp:
-	  [o]   fr2
-	  [o]   fr1
-	  [ ]   technische tekeningen
-	 */
 	{
 	  type:'title',
 	  title:'Een&nbsp;Podium&nbsp;voor het&nbsp;CKE',
@@ -34,6 +25,7 @@ var OOAccount = {
 	  ]},
 	  html:'<div style="border-bottom:1px solid;"></div><h4>Keuze</h4><p>Klassieke muziek</p><ul>'+
 	    '<li>Vorm podium</li>'+
+        '<li>Geluid</li>'+
 	    '<li>Uitdaging</li>'+
 	  '</ul>',
 	  elm:[{typ:'img',caption:'Passenger album cover',src:'cke/fig1.jpg'}],
@@ -50,7 +42,7 @@ var OOAccount = {
 	    {title:'Combinatie',
 	    items:['+- redelijk weinig ongebruikte ruimte','+- redelijk eenvoudig op te zetten']},
 	    {title:'Opblaasbaar podium',
-	    items:['+ eenvoudig op te zetten','+ weinig ongebruikte ruimte','- niet mooi','- slecht voor geluid']},
+	    items:['+ eenvoudig op te zetten','+ weinig ongebruikte ruimte','- niet mooi']},
 	  ]},
 	  elm:[{typ:'img',caption:'Opblaasbaar podium',src:'cke/fig2.jpg'}],
 	  pos:{z:'3100px',y:'-100px',ry:-90}
@@ -68,7 +60,7 @@ var OOAccount = {
 	  type:'content',
 	  title:'Ontwerp pt. 1 - Rob',
 	  elm:[
-	    {h:'100%',c:'fr2',type:'video',src:'cke/fr2.ogv'}
+	    {h:'100%',c:'fr2',type:'video',src:'cke/fr2.1.ogv'}
 	  ],
 	  comp:function(){
 	    $('.fr2')[0].currentTime=0;
@@ -98,19 +90,8 @@ var OOAccount = {
 	  type:'content',
 	  title:'Ontwerp pt. 3 - Rob',
 	  elm:[
-	    {h:'100%',type:'img',src:'cke/fig3.png'}
-// 	    {h:'100%',type:'img',src:'cke/fr1.ogv'}
+	    {w:'auto',type:'img',src:'cke/fig3.png'}
 	  ],
-	  pos:{z:'7500px',y:'-100px',ry:-90}
-	},
-	{
-	  type:'content',
-	  title:'Ontwerp pt. 4 - Rob',
-	  elm:[
-	    {h:'100%',type:'img',src:'cke/fig4.png'}
-// 	    {h:'100%',type:'img',src:'cke/fr1.ogv'}
-	  ],
-	  hide:true,
 	  pos:{z:'7500px',y:'-100px',ry:-90}
 	},
 	{
