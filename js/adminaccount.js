@@ -3,6 +3,20 @@ var adminAccount = {
   cover:"http://www.wall321.com/thumbnails/detail/20121107/android%20google%20android%20jelly%20bean%201920x1080%20wallpaper_www.wall321.com_26.jpg",
   slideshowdata:[
     {
+      title: 'White Privilege',
+      sta: 1,
+      /*load:'puzzle',
+      style:'puzzle-light',
+      type:'puzzle',*/
+      slides: [
+        {
+          type: 'title',
+          title: 'White Privilege',
+          subtitle: 'door Stef, Koen en Lars'
+        }
+      ]
+    },
+    {
       'title':'Example',
       'sta': 1,
       'style':'normal',
