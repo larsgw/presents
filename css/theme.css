@@ -145,6 +145,16 @@
 
 #V.puzzle-light{}
 
+/* When slide-style is: puzzle (light-bg) */
+
+#V .slide[data-slide-style="puzzle-light-bg"] {font-family:Verdana, Arial, sans-serif;color:#333 !important;}
+#V .slide[data-slide-style="puzzle-light-bg"].dia {border:1px solid #333;background:white;}
+
+#V .slide[data-slide-style="puzzle-light-bg"] .h1 {font-family:Oswald, Verdana, Arial, sans-serif;color:#333 !important;}
+#V .slide[data-slide-style="puzzle-light-bg"] .h2 {font-family:Oswald, Verdana, Arial, sans-serif;color:#666 !important;}
+
+#V.puzzle-light{}
+
 /* When slide-style is: puzzle (tree background) */
 
 #V .slide[data-slide-style="puzzle-tree"] {font-family:Verdana, Arial, sans-serif;color:#333 !important;}
