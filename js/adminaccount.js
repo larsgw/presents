@@ -13,6 +13,27 @@ var adminAccount = {
           type: 'title',
           title: 'White Privilege',
           subtitle: 'door Stef, Koen en Lars'
+        },
+        {
+          title: 'White Privilege',
+	  list: { items: [
+	    '',
+	    ''
+	  ] }
+        },
+        {
+          title: 'Economisch perspectief',
+	  list: { items: [
+	    'Economische klasse, niet huidskleur',
+	    ''
+	  ] }
+        },
+        {
+          title: 'Nuance',
+	  list: { items: [
+	    '',
+	    ''
+	  ] }
         }
       ]
     },
