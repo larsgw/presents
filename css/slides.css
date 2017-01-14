@@ -87,6 +87,8 @@
 .slider.puzzleload .rotate-container .slide.bhid * {-webkit-backface-visibility: hidden;backface-visibility: hidden;}
 .slider.puzzleload .rotate-container .slide.path   {opacity:0;pointer-events: none;}
 
+.slider .slide.html {top:253px;left:450px;}
+
 /* The slide styling */
 
 .slide {
