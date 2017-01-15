@@ -1,0 +1,283 @@
+<style>
+.main, .main * {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.main{position:relative;transform-origin:50% 50%;
+transform:rotateX(90deg) scale3d(1.000,1.000,1.000) translate3d(-500px,-250px,0);}
+.main *{position:absolute}
+.main *{box-sizing:border-box;}
+div.rect{border:1px solid black;}
+
+.ground.rect {background:#edc9af}
+.struct.a1 path {fill:#333;}
+
+.main :not(svg) {z-index:1;}
+
+.build {
+  --cuboid-height:25px;
+  --cuboid-color:#222;
+}
+
+.build .a1,.build .a2,.build .a3 { --cuboid-depth:101px; }
+.build .a4, .build .a5           { --cuboid-depth: 115.65px; }
+
+.build .a1,.build .a3,.build .a4 { --cuboid-width:101px; }
+.build .a2,.build .a5            { --cuboid-width:202px; }
+
+.facility.a1 {
+  --cuboid-width:50px;
+  --cuboid-depth:20px;
+  --cuboid-height:40px;
+  --cuboid-color:#bbb;
+}
+
+.facility.a3 { --cuboid-color:#888; }
+
+.facility.a3 .a1 {
+  --cuboid-width:125px;
+  --cuboid-depth:131px;
+  --cuboid-height:25px;
+}
+
+.facility.a3 .a2 {
+  --cuboid-width:75px;
+  --cuboid-depth:75px;
+  --cuboid-height:125px;
+}
+
+.facility.a5 {
+  --cuboid-width:125px;
+  --cuboid-depth:20px;
+  --cuboid-height:15px;
+  --cuboid-color:brown;
+}
+
+.facility.a7 {
+  --cuboid-width:119px;
+  --cuboid-depth:179px;
+  --cuboid-height:20px;
+  --cuboid-color:#841F27;
+}
+
+.struct.a2 {
+  --cilinder-components:12;
+  --cilinder-height:500px;
+}
+
+.struct.a2 .cilinder.a1 {
+  --cilinder-color:#bbaa99;
+  --cilinder-radius:4px;
+  transform-origin:0 0;
+  transform: translate3d(0,285px,9px) rotateZ(-90deg);
+}
+.struct.a2 .cilinder.a2 {
+  --cilinder-color:#aaa;
+  --cilinder-radius:2px;
+  transform-origin:0 0;
+  transform: translate3d(0,295px,9px) rotateZ(-90deg);
+}
+
+/*BEGIN Cuboid*/
+.bottom,.top,.front,.back,.left,.right { transform-origin:0 0;background-color:var(--cuboid-color); }
+
+.bottom,.top,.front,.back { width:var(--cuboid-width); }
+.left,.right,.top,.bottom { height:var(--cuboid-depth); }
+.left,.right { width:var(--cuboid-height); }
+.front,.back { height:var(--cuboid-height); }
+
+.back  { transform:rotateX(90deg) }
+.front { transform:rotateX(90deg) translateZ(calc(-1 * var(--cuboid-depth))) }
+.left  { transform:rotateY(-90deg) }
+.right { transform:rotateY(90deg) translate3d(calc(-1 * var(--cuboid-height)),0,var(--cuboid-width)) }
+.top   { transform:translateZ(var(--cuboid-height)) }
+
+.bottom:before,.top:before,.front:before,.back:before,.left:before,.right:before
+{ content:'';position:absolute;top:0;right:0;bottom:0;left:0; }
+.back:before { background-color:rgba(0,0,0,.4); }
+.bottom:before { background-color:rgba(0,0,0,.5); }
+.front:before { background-color:rgba(0,0,0,.1); }
+.left:before { background-color:rgba(0,0,0,.2); }
+.right:before { background-color:rgba(0,0,0,.3); }
+/*END*/
+
+/*BEGIN Cilinder*/
+.cilinder {
+  --cilinder-angle: calc(360deg / var(--cilinder-components));
+  --cilinder-component-width: calc(1.1px + ((6.28 * var(--cilinder-radius)) / var(--cilinder-components)))
+}
+.cilinder:after { content:var(--cilinder-angle) var(--cilinder-components); }
+.cilinder * { background-color:var(--cilinder-color); }
+.cilinder [class^=b] {
+  height: var(--cilinder-height);
+  width:  var(--cilinder-component-width);
+}
+.cilinder [class^=a] {
+  transform-origin:50% 0;
+  width: calc(2 * var(--cilinder-radius));
+  height: calc(2 * var(--cilinder-radius));
+  border-radius: 100%;
+}
+.cilinder .a1  { transform:translateZ(calc(-1 * var(--cilinder-radius))) rotateX(90deg) }
+.cilinder .a2  { transform:translateZ(calc(-1 * var(--cilinder-radius))) rotateX(90deg) translateZ(calc(-1 * var(--cilinder-height))) }
+.cilinder .b1  { transform:rotateY(calc(var(--cilinder-angle) * 0 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b2  { transform:rotateY(calc(var(--cilinder-angle) * 1 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b3  { transform:rotateY(calc(var(--cilinder-angle) * 2 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b4  { transform:rotateY(calc(var(--cilinder-angle) * 3 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b5  { transform:rotateY(calc(var(--cilinder-angle) * 4 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b6  { transform:rotateY(calc(var(--cilinder-angle) * 5 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b7  { transform:rotateY(calc(var(--cilinder-angle) * 6 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b8  { transform:rotateY(calc(var(--cilinder-angle) * 7 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b9  { transform:rotateY(calc(var(--cilinder-angle) * 8 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b10 { transform:rotateY(calc(var(--cilinder-angle) * 9 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b11 { transform:rotateY(calc(var(--cilinder-angle) * 10)) translateZ(var(--cilinder-radius)) }
+.cilinder .b12 { transform:rotateY(calc(var(--cilinder-angle) * 11)) translateZ(var(--cilinder-radius)) }
+/*END*/
+
+</style>
+
+<div class="main">
+  <div class="ground rect" style="width:1000px;height:500px;"></div>
+  <div class="facility">
+    <div class="facility a1" style="left:851px;top:24px">
+      <div>
+          <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      <div style="top:30px;">
+          <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      
+      <div style="left:0px;top:75px">
+          <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      <div style="left:0px;top:105px">
+          <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      
+      <div style="left:75px;top:0px">
+          <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      <div style="left:75px;top:30px">
+          <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      
+      <div style="left:75px;top:75px">
+          <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      <div style="left:75px;top:105px">
+          <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+    </div>
+    <div class="facility a2" style="left:851px;top:197px">
+      <div class="rect" style="width:125px;height:131px;"></div>
+    </div>
+    <div class="facility a3" style="left:678px;top:197px">
+      <div class="a1">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      <div class="a2" style="left:25px;top:28px">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+    </div>
+    <div class="facility a4" style="left:776px;top:376px">
+      <div class="rect" style="width:200px;height:100px;"></div>
+      <div style="left:60px;top:20px;transform:scale(0.2,0.2)">
+        <svg width="678" height="592" viewBox="0 0 678 592">
+          <path vector-effect="non-scaling-stroke" d="M 84.6476 134.587 L 194.765 6.55578 C 201.308 6.85931 213.112 6.26155 214.394 7.46656 C 201.235 41.6196 177.674 83.9998 159.24 122.192 C 160.233 126.712 160.469 131.451 165.436 134.815 L 84.6476 134.587 Z"/>
+          <path vector-effect="non-scaling-stroke" d="M 84.7747 164.619 L 193.632 293.723 C 200.178 293.484 211.976 294.197 213.269 293.005 C 200.446 258.724 177.301 216.115 159.242 177.744 C 160.279 173.235 160.562 168.498 165.562 165.183 L 84.7747 164.619 Z"/>
+          <path vector-effect="non-scaling-stroke" d="M 303.714 151.402 L 317.735 194.99 C 313.246 197.309 308.2 197.93 303.136 198.498 L 267.442 159.8 M 236.15 135.407 L 19.1837 135.349 C 9.68964 137.767 -0.695046 139.107 -8.38298 143.711 C -8.38298 143.711 -11.1787 147.947 -10.4976 150.845 C -9.80957 153.771 -1.3016 158.695 -0.858264 158.476 C -1.58105 158.906 17.3644 163.146 18.4659 163.323 C 19.3952 163.472 244.718 164.889 244.718 164.889 M 236.038 135.406 C 258.541 138.958 287.076 147.343 312.276 150.323 C 288.384 152.913 267.056 159.816 244.652 164.908 M 267.224 141.644 L 302.509 103.703 C 307.248 102.937 312.139 102.559 318.423 105.707 C 313.233 120.95 308.655 134.086 304.059 149.134"/>
+        </svg>
+      </div>
+    </div>
+    <div class="facility a5" style="left:505px;top:24px">
+      <div>
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      <div style="left:173px">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      <div style="top:30px">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+      <div style="left:173px;top:30px">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+    </div>
+    <div class="facility a6" style="left:678px;top:376px">
+      <div class="rect" style="width:50px;height:100px;"></div>
+      <circle cx="25" cy="50" r="25" />
+    </div>
+    <div class="facility a7" style="left:500px;top:125px">
+      <div class="rect" style="top:24px;">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+    </div>
+    <div class="facility a8" style="left:24px;top:376px">
+      <svg width="571" height="100" viewBox="0 0 571 100">
+        <path d="
+        M0,0 H95.167 L145,43 L190,8 H571 v10 H190
+        L151,48.5 L190,82 H571 v18 H285.5 v-8 H190
+        L145,53 L95.167,92 H0 v-10 H95.167 L139,48
+        L95.167,10 H0 V0
+        Z
+        "></path>
+      </svg>
+    </div>
+  </div>
+  <div class="struct">
+    <div class="struct a1">
+      <svg width="1000" height="500" viewBox="0 0 1000 500">
+        <path fill-rule="evenodd"
+        d="M0,115.65 H650 V24 H658 V115.65 H823 V24 H831 V169 H976 V177 H831 V348 H976
+        V356 H654 V476 H619 V356 H24 V348 H619 V149 H0 V116 Z M654,149 H823 V348 H654 Z
+        "></path>
+      </svg>
+    </div>
+    <div class="struct a2">
+      <div class="rect" style="top:250px;width:500px;height:78px;"></div>
+      
+      <div class="cilinder a1">
+        <div class="a1"></div><div class="a2"></div>
+        <div class="b1"></div><div class="b2"></div><div class="b3"></div>
+        <div class="b4"></div><div class="b5"></div><div class="b6"></div>
+        <div class="b7"></div><div class="b8"></div><div class="b9"></div>
+        <div class="b10"></div><div class="b11"></div><div class="b12"></div>
+      </div>
+      <div class="cilinder a2">
+        <div class="a1"></div><div class="a2"></div>
+        <div class="b1"></div><div class="b2"></div><div class="b3"></div>
+        <div class="b4"></div><div class="b5"></div><div class="b6"></div>
+        <div class="b7"></div><div class="b8"></div><div class="b9"></div>
+        <div class="b10"></div><div class="b11"></div><div class="b12"></div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="build">
+    <div class="build a1">
+      <div style="top:149px">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+    </div>
+    <div class="build a2">
+      <div style="left:149px;top:149px">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+    </div>
+    <div class="build a3">
+      <div style="left:399px;top:149px">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+    </div>
+    <div class="build a4">
+      <div style="left:149px">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+    </div>
+    <div class="build a5">
+      <div style="left:298px">
+        <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+      </div>
+    </div>
+  </div>
+</div>

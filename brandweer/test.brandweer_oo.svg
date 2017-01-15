@@ -436,15 +436,9 @@
 <style>path[style]{stroke-width:.6 !important;}
   path{transform:translate(-10px,-10px);}</style>
 
-<path stroke-linecap="round" stroke="black" stroke-width="5" d="M
-10 10
-Z"></path>
-<path stroke-linecap="round" stroke="black" stroke-width="5" d="M
-10 97.9
-Z"></path>
-<path stroke-linecap="round" stroke="black" stroke-width="5" d="M
-10 70.6
-Z"></path>
+<path stroke-linecap="round" stroke="black" stroke-width="5" d="
+
+"></path>
 
 <!--
 M 99.4 249.4
