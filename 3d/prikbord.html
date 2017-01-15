@@ -1,0 +1,177 @@
+<style>
+.prikbord {
+  transform:translate3d(-1750px,2500px,0) rotateX(90deg);
+}
+
+.frame {
+  position:relative;
+  --cuboid-color:#ccbbaa;
+}
+
+.frame > .back {
+  position:absolute;
+  width:3500px;
+  height:5000px;
+  background:url('3d/img/kurk.jpg');
+  transform-origin:0 0;
+  transform:rotateX(90deg);
+}
+
+.frame > .top, .frame > .bottom {
+  --cuboid-width:3500px;
+  --cuboid-depth:100px;
+  --cuboid-height:100px;
+}
+
+.frame > .left, .frame > .right {
+  --cuboid-width:100px;
+  --cuboid-depth:100px;
+  --cuboid-height:5000px;
+}
+
+.frame > .bottom { transform: translateZ(4900px); }
+.frame > .right  { transform: translateX(3400px); }
+
+/*BEGIN Cuboid*/
+.cuboid { position:relative; }
+.cuboid .bottom,.cuboid .top,.cuboid .front,.cuboid .back,.cuboid .left,.cuboid .right { transform-origin:0 0;background-color:var(--cuboid-color);position:absolute }
+
+.cuboid .bottom,.cuboid .top,.cuboid .front,.cuboid .back { width:var(--cuboid-width); }
+.cuboid .left,.cuboid .right,.cuboid .top,.cuboid .bottom { height:var(--cuboid-depth); }
+.cuboid .left,.cuboid .right { width:var(--cuboid-height); }
+.cuboid .front,.cuboid .back { height:var(--cuboid-height); }
+
+.cuboid .back  { transform:rotateX(90deg) }
+.cuboid .front { transform:rotateX(90deg) translateZ(calc(-1 * var(--cuboid-depth))) }
+.cuboid .left  { transform:rotateY(-90deg) }
+.cuboid .right { transform:rotateY(90deg) translate3d(calc(-1 * var(--cuboid-height)),0,var(--cuboid-width)) }
+.cuboid .top   { transform:translateZ(var(--cuboid-height)) }
+
+.cuboid .bottom:before,.cuboid .top:before,.cuboid .front:before,.cuboid .back:before,.cuboid .left:before,.cuboid .right:before
+{ content:'';position:absolute;top:0;right:0;bottom:0;left:0; }
+.cuboid .back:before { background-color:rgba(0,0,0,.4); }
+.cuboid .bottom:before { background-color:rgba(0,0,0,.5); }
+.cuboid .front:before { background-color:rgba(0,0,0,.1); }
+.cuboid .left:before { background-color:rgba(0,0,0,.2); }
+.cuboid .right:before { background-color:rgba(0,0,0,.3); }
+/*END*/
+
+/*BEGIN Cilinder*/
+.cilinder {
+  --cilinder-angle: calc(360deg / var(--cilinder-components));
+  --cilinder-component-width: calc(1.1px + ((6.28 * var(--cilinder-radius)) / var(--cilinder-components)))
+}
+.cilinder:after { content:var(--cilinder-angle) var(--cilinder-components); }
+.cilinder * { background-color:var(--cilinder-color); }
+.cilinder [class^=b] {
+  height: var(--cilinder-height);
+  width:  var(--cilinder-component-width);
+}
+.cilinder [class^=a] {
+  transform-origin:50% 0;
+  width: calc(2 * var(--cilinder-radius));
+  height: calc(2 * var(--cilinder-radius));
+  border-radius: 100%;
+}
+.cilinder .a1  { transform:translateZ(calc(-1 * var(--cilinder-radius))) rotateX(90deg) }
+.cilinder .a2  { transform:translateZ(calc(-1 * var(--cilinder-radius))) rotateX(90deg) translateZ(calc(-1 * var(--cilinder-height))) }
+.cilinder .b1  { transform:rotateY(calc(var(--cilinder-angle) * 0 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b2  { transform:rotateY(calc(var(--cilinder-angle) * 1 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b3  { transform:rotateY(calc(var(--cilinder-angle) * 2 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b4  { transform:rotateY(calc(var(--cilinder-angle) * 3 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b5  { transform:rotateY(calc(var(--cilinder-angle) * 4 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b6  { transform:rotateY(calc(var(--cilinder-angle) * 5 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b7  { transform:rotateY(calc(var(--cilinder-angle) * 6 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b8  { transform:rotateY(calc(var(--cilinder-angle) * 7 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b9  { transform:rotateY(calc(var(--cilinder-angle) * 8 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b10 { transform:rotateY(calc(var(--cilinder-angle) * 9 )) translateZ(var(--cilinder-radius)) }
+.cilinder .b11 { transform:rotateY(calc(var(--cilinder-angle) * 10)) translateZ(var(--cilinder-radius)) }
+.cilinder .b12 { transform:rotateY(calc(var(--cilinder-angle) * 11)) translateZ(var(--cilinder-radius)) }
+/*END*/
+</style>
+
+<div class="prikbord">
+  <div class="frame">
+    <div class="back"></div>
+    <div class="left cuboid">
+      <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+    </div>
+    <div class="right cuboid">
+      <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+    </div>
+    <div class="top cuboid">
+      <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+    </div>
+    <div class="bottom cuboid">
+      <div class="bottom"></div><div class="back"></div><div class="front"></div><div class="left"></div><div class="right"></div><div class="top"></div>
+    </div>
+  </div>
+<style>
+.paper [class^="a"], .paper [class^="e"] { font-family:Oswald; }
+.paper [class^="d"] { font-family:'Indie Flower'; }
+.paper [class^="d"] { padding:25px; }
+.paper [class^="e"] { padding:75px; }
+.paper [class^="d"], .paper [class^="e"] { font-size:3em;background:#feb; }
+.paper [class^="d"] h1, .paper [class^="e"] h1 { font-size:2em; }
+
+.paper { transform-origin:0 0;transform:rotateX(-90deg) translate3d(0,-5000px,1px); }
+.paper > * { position:absolute;background:white; }
+.paper > * > * { display:inline-block !important;vertical-align:middle }
+.paper > [class^="a"] > h1 { position:absolute;top:35%;width:100%;text-align:center; }
+.paper > img { border:solid white;border-width:50px 50px 125px 50px; }
+
+.paper .a1  { width: 900px;height: 506px;transform:translate(1300px,2247px) }
+
+.paper .b1  { width:1800px;height:1012px;transform:translate( 850px, 300px) }
+
+.paper .c1  { width: 450px;height:  auto;transform:translate( 400px,2247px) rotate( 20deg) }
+.paper .c2  { width: 650px;height:  auto;transform:translate(1300px,3000px) rotate( -5deg) }
+.paper .c3  { width: 900px;height:  auto;transform:translate( 300px,3300px) rotate(  5deg) }
+.paper .c4  { width: 400px;height:  auto;transform:translate(2500px,3300px) rotate(-15deg) }
+.paper .c5  { width: 500px;height:  auto;transform:translate(2750px,1300px) }
+
+.paper .d1  { width: 500px;height:  auto;transform:translate(2750px,4000px) }
+.paper .d2  { width: 500px;height:  auto;transform:translate(2650px,2700px) scale(1.8,1.8) }
+.paper .d3  { width: 600px;height:  auto;transform:translate(1350px,4200px) rotate(  5deg) scale(1.8,1.8) }
+
+.paper .e1  { width: 500px;height:  auto;transform:translate(2750px,2050px) rotate(  5deg) }
+</style>
+  <div class="paper">
+    <div class="a1"><h1 style="font-size:150px;">Jezus</h1></div>
+    
+    <iframe class="b1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27155.46759714002!2d35.20216065282244!3d31.70405267741721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502d865aec80d67%3A0xf5c4213de4baf1f8!2sBethlehem!5e0!3m2!1snl!2sus!4v1484503124715"></iframe>
+    
+    <img class="c1" src="http://www.jaconferentie.nl/wp-content/uploads/2016/01/jezus.png" />
+    <img class="c2" src="https://wijnbijheteten.files.wordpress.com/2014/11/350918__rc483stignirea-lui-iisus-crucifixion_p.jpg" />
+    <img class="c3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Leonardo_da_Vinci_%281452-1519%29_-_The_Last_Supper_%281495-1498%29.jpg/1280px-Leonardo_da_Vinci_%281452-1519%29_-_The_Last_Supper_%281495-1498%29.jpg" />
+    <img class="c4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/TitianStJohn.jpg/220px-TitianStJohn.jpg" />
+    <img class="c5" src="http://spiritueleteksten.be/wp-content/uploads/2014/06/Johannes-de-Doper-doopt-Jezus-in-de-Jordaan-en-de-Heilige-geest-daalt-neer-William-Brassey-Hole.jpg" />
+    
+    <div class="d1">
+      <h1>Is het Johannes en niet Judas???
+    </div>
+    <div class="d2">
+      <h1>Johannes:</h1>
+      <ul>
+        <li><u>Apocalypticus!!!</u></li>
+        <li>Onheilsprofeet</li>
+        <li><i>Lone wolf</i></li>
+        <li>Kritiek beleid Tempel</li>
+      </ul>
+    </div>
+    <div class="d3">
+      <h1>Jezus:</h1>
+      <ul>
+        <li>Geloofde in barmhartige God</li>
+        <li>Sprak in gelijkenissen</li>
+        <li>Genoot van luxe</li>
+        <li>Joods geboren; zoon van Jozef (timmerman) en Maria</li>
+        <li>6 v.Chr. (Nazareth) - 33 n.Chr. (Jeruzalem)</li>
+      </ul>
+    </div>
+    
+    <div class="e1"><h1>'Johannes de Doper doopt Jezus'</h1>
+      <p><b>26 n.Chr., de Jordaan</b> - Het lijkt erop dat Johannes de Doper Jezus heeft gedoopt in de Jordaan, waarna volgens getuigen de Heilige Geest schijnt te zijn neergedalen</p>
+    </div>
+  </div>
+</div>

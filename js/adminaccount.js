@@ -3,6 +3,35 @@ var adminAccount = {
   cover:"http://www.wall321.com/thumbnails/detail/20121107/android%20google%20android%20jelly%20bean%201920x1080%20wallpaper_www.wall321.com_26.jpg",
   slideshowdata:[
     {
+      title:'LV Poster Jezus',
+      sta: 1,
+      style:'puzzle-light-bg',
+      load:'puzzle',
+      type:'puzzle',
+      slides: [
+        {
+          kind:'none',
+          type:'none',
+          pos:{sc:5}
+        },
+        {
+          kind:'none',
+          type:'none'
+        },
+        {
+          kind:'none',
+          type:'none',
+          pos:{sc:2,y:'-1500px'}
+        },
+        {
+          kind:'html',type:'html',
+          pos:{x:'450px',y:'253px',z:'-1px'},
+          title:'Prikbord',
+          contenturl:'3d/prikbord.html'
+        }
+      ]
+    },
+    {
       'title':'Example',
       'sta': 1,
       'style':'normal',
