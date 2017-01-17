@@ -107,49 +107,74 @@
     </div>
   </div>
 <style>
+</style>
+  <div class="lines">
+  </div>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Homemade+Apple');
+
 .paper [class^="a"], .paper [class^="e"] { font-family:Oswald; }
 .paper [class^="d"] { font-family:'Indie Flower'; }
-.paper [class^="d"] { padding:25px; }
-.paper [class^="e"] { padding:75px; }
-.paper [class^="d"], .paper [class^="e"] { font-size:3em;background:#feb; }
-.paper [class^="d"] h1, .paper [class^="e"] h1 { font-size:2em; }
+.paper [class^="f"] { font-family:'Homemade Apple';color:#191970; }
+.paper [class^="a"], .paper [class^="d"] { padding:25px; }
+.paper [class^="e"], .paper [class^="f"] { padding:75px; }
+.paper [class^="d"], .paper [class^="e"], .paper [class^="f"] { background:#feb; }
+.paper [class^="c"] { border:solid white;border-width:50px 50px 125px 50px; }
+.paper [class^="a"] h1 { margin-top:250px;width:100%;text-align:center; }
+.paper [class^="d"] h1, .paper [class^="e"] h1, .paper [class^="f"] h1 { font-size:2em; }
+.paper [class^="c"] img { width: 100%; }
 
 .paper { transform-origin:0 0;transform:rotateX(-90deg) translate3d(0,-5000px,1px); }
-.paper > * { position:absolute;background:white; }
-.paper > * > * { display:inline-block !important;vertical-align:middle }
-.paper > [class^="a"] > h1 { position:absolute;top:35%;width:100%;text-align:center; }
-.paper > img { border:solid white;border-width:50px 50px 125px 50px; }
+.paper > * { position:absolute;background:white;font-size:3em; }
+.paper > * > :not(p) { display:inline-block !important;vertical-align:middle }
 
-.paper .a1  { width: 900px;height: 506px;transform:translate(1300px,2247px) }
+.paper > div:before {
+  content:'';display:block;width:50px;height:50px;border-radius:100%;
+  background:#aa4444;box-shadow:0 0 20px rgba(0,0,0,.5);
+  margin:-25px auto 0 auto;
+}
+.paper [class^="c"]:before { margin-top:-75px; }
+.paper [class^="d"]:before { transform:scale(0.56,0.56); }
+.paper [class^="e"]:before, .paper [class^="f"]:before { margin-top:-100px; }
 
-.paper .b1  { width:1800px;height:1012px;transform:translate( 850px, 300px) }
+.paper .a1  { width: 900px;height: 700px;transform:translate(1300px,2000px) }
 
-.paper .c1  { width: 450px;height:  auto;transform:translate( 400px,2247px) rotate( 20deg) }
-.paper .c2  { width: 650px;height:  auto;transform:translate(1300px,3000px) rotate( -5deg) }
-.paper .c3  { width: 900px;height:  auto;transform:translate( 300px,3300px) rotate(  5deg) }
-.paper .c4  { width: 400px;height:  auto;transform:translate(2500px,3300px) rotate(-15deg) }
+.paper .b1  { width:2000px;height:1512px;transform:translate(1350px, 300px) }
+
+.paper .c1  { width: 450px;height:  auto;transform:translate( 450px,3400px) rotate( -5deg) }
+.paper .c2  { width: 650px;height:  auto;transform:translate( 300px, 900px) rotate( -5deg) }
+.paper .c3  { width: 900px;height:  auto;transform:translate(1300px,3000px) rotate(  5deg) }
+.paper .c4  { width: 400px;height:  auto;transform:translate(2550px,3050px) rotate( -5deg) }
 .paper .c5  { width: 500px;height:  auto;transform:translate(2750px,1300px) }
 
-.paper .d1  { width: 500px;height:  auto;transform:translate(2750px,4000px) }
-.paper .d2  { width: 500px;height:  auto;transform:translate(2650px,2700px) scale(1.8,1.8) }
-.paper .d3  { width: 600px;height:  auto;transform:translate(1350px,4200px) rotate(  5deg) scale(1.8,1.8) }
+.paper .d2  { width: 500px;height:  auto;transform:translate(2500px,3900px) scale(1.8,1.8) }
+.paper .d3  { width: 600px;height:  auto;transform:translate( 500px,4200px) rotate(  5deg) scale(1.8,1.8) }
 
 .paper .e1  { width: 500px;height:  auto;transform:translate(2750px,2050px) rotate(  5deg) }
+.paper .e2  { width: 600px;height:  auto;transform:translate( 300px, 400px) rotate(  5deg) }
+
+.paper .f1  { width: 500px;height:  auto;transform:translate( 250px,1600px) rotate(  5deg) }
+.paper .f2  { width: 500px;height:  auto;transform:translate( 900px,1500px) rotate( -5deg) }
+.paper .f3  { width: 600px;height:  auto;transform:translate( 500px,2500px) rotate(  0deg) }
+
+.paper abbr { font-family:'Homemade Apple';color:#191970; }
 </style>
   <div class="paper">
-    <div class="a1"><h1 style="font-size:150px;">Jezus</h1></div>
+    <div class="a1"><h1 style="font-size:150px;">Jezus</h1>
+      <p class="d">Ik heb feiten verzameld</p>
+      <p><abbr>Ik schrijf geruchten op</abbr></p>
+      <p>Ik ben de krant</p>
+    </div>
     
     <iframe class="b1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27155.46759714002!2d35.20216065282244!3d31.70405267741721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502d865aec80d67%3A0xf5c4213de4baf1f8!2sBethlehem!5e0!3m2!1snl!2sus!4v1484503124715"></iframe>
+<!--     <iframe class="b1" src="hi"></iframe> -->
     
-    <img class="c1" src="lv-poster/jezus.png" />
-    <img class="c2" src="lv-poster/350918__rc483stignirea-lui-iisus-crucifixion_p.jpg" />
-    <img class="c3" src="lv-poster/Leonardo_da_Vinci_(1452-1519)_-_The_Last_Supper_(1495-1498).jpg" />
-    <img class="c4" src="lv-poster/220px-TitianStJohn.jpg" />
-    <img class="c5" src="lv-poster/Johannes-de-Doper-doopt-Jezus-in-de-Jordaan-en-de-Heilige-geest-daalt-neer-William-Brassey-Hole.jpg" />
+    <div class="c1"><img src="lv-poster/jezus.png" /></div>
+    <div class="c2"><img src="lv-poster/350918__rc483stignirea-lui-iisus-crucifixion_p.jpg" /></div>
+    <div class="c3"><img src="lv-poster/Leonardo_da_Vinci_(1452-1519)_-_The_Last_Supper_(1495-1498).jpg" /></div>
+    <div class="c4"><img src="lv-poster/220px-TitianStJohn.jpg" /></div>
+    <div class="c5"><img src="lv-poster/Johannes-de-Doper-doopt-Jezus-in-de-Jordaan-en-de-Heilige-geest-daalt-neer-William-Brassey-Hole.jpg" /></div>
     
-    <div class="d1">
-      <h1>Is het Johannes en niet Judas???
-    </div>
     <div class="d2">
       <h1>Johannes:</h1>
       <ul>
@@ -162,16 +187,34 @@
     <div class="d3">
       <h1>Jezus:</h1>
       <ul>
-        <li>Geloofde in barmhartige God</li>
-        <li>Sprak in gelijkenissen</li>
-        <li>Genoot van luxe</li>
         <li>Joods geboren; zoon van Jozef (timmerman) en Maria</li>
         <li>6 v.Chr. (Nazareth) - 33 n.Chr. (Jeruzalem)</li>
+        <li><abbr>Geloofde in barmhartige God</abbr></li>
+        <li><abbr>Sprak in gelijkenissen</abbr></li>
+        <li><abbr>Genoot van luxe</abbr></li>
       </ul>
     </div>
     
     <div class="e1"><h1>'Johannes de Doper doopt Jezus'</h1>
-      <p><b>26 n.Chr., de Jordaan</b> - Het lijkt erop dat Johannes de Doper Jezus heeft gedoopt in de Jordaan, waarna volgens getuigen de Heilige Geest schijnt te zijn neergedalen</p>
+      <p><b>26 n.Chr., de Jordaan</b> - Het lijkt erop dat Johannes de Doper Jezus heeft gedoopt in de Jordaan<abbr>, waarna volgens getuigen de Heilige Geest schijnt te zijn neergedalen</abbr></p>
+    </div>
+    <div class="e2"><h1>Jezus gekruisigd</h1>
+      <p><b>33 n.Chr., Jeruzalem</b> - Jezus is voor het Joodse paasfeest naar Jeruzalem gekomen, waar hij met zijn leerlingen een maaltijd nuttigde. Na deze laatste maaltijd werd Jezus
+      door een aantal joodse groeperingen gearresteerd. Vrij snel werd hij overgeleverd aan de Romeinse stadhouder Pilatus, die hem kruisigde</p>
+    </div>
+    
+    <div class="f1">
+      <p><b>"Mijn God, mijn God, waarom hebt u mij verlaten?"</b></p>
+      <ul>
+        <li>Eén van de laatste zinnen die Jezus, na een zonsverduistering van 3 uur, heeft gezegd</li>
+      </ul>
+    </div>
+    <div class="f2">
+      Nadat Jezus gestorven was, scheurde in de tempel het voorhangsel van boven tot onder, beefde de aarde en spleten de rotsen. Veel gestorven heiligen werden weer tot leven gewekt
+    </div>
+    <div class="f3"><h1>Lichaam Jezus verdwenen</h1>
+      <p><b>33 n.Chr., Jeruzalem</b> - Toen een aantal aanhangers van Jezus, onder wie Maria van Magdalena en nog een Maria, vanochtend bij zijn graf gingen kijken bleek dat de steen weg was gerold, en dat Jezus weg was!
+      Een aantal van zijn volgelingen zeggen dat ze Jezus hebben gezien.<br><h1><abbr>Jezus opgewekt uit de dood?!</abbr><h1/></span></p>
     </div>
   </div>
 </div>

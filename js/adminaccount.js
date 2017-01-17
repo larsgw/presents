@@ -4,24 +4,41 @@ var adminAccount = {
   slideshowdata:[
     {
       title:'LV Poster Jezus',
-      sta: 1,
+      sta: 6,
       style:'puzzle-light-bg',
       load:'puzzle',
       type:'puzzle',
       slides: [
         {
-          kind:'none',
-          type:'none',
+          kind:'none',type:'none',
           pos:{sc:5}
         },
         {
-          kind:'none',
-          type:'none'
+          kind:'none',type:'none'
         },
         {
-          kind:'none',
-          type:'none',
-          pos:{sc:2,y:'-1500px'}
+          kind:'none',type:'none',
+          pos:{sc:1.75,x:'-900px',y:'1500px'}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:1.4,x:'1250px',y:'-550px'}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:1.4,x:'1000px',y:'1500px'}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:1.6,x:'-1000px',y:'-1300px'}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:1.4,x:'-1000px',y:'500px'}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:2,x:'500px',y:'-1500px'}
         },
         {
           kind:'html',type:'html',
