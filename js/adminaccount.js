@@ -3,6 +3,52 @@ var adminAccount = {
   cover:"http://www.wall321.com/thumbnails/detail/20121107/android%20google%20android%20jelly%20bean%201920x1080%20wallpaper_www.wall321.com_26.jpg",
   slideshowdata:[
     {
+      title:'LV Poster Jezus',
+      sta: 6,
+      style:'puzzle-light-bg',
+      load:'puzzle',
+      type:'puzzle',
+      slides: [
+        {
+          kind:'none',type:'none',
+          pos:{sc:5}
+        },
+        {
+          kind:'none',type:'none'
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:1.75,x:'-900px',y:'1500px'}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:1.4,x:'1250px',y:'-550px'}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:1.4,x:'1000px',y:'1500px'}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:1.6,x:'-1000px',y:'-1300px'}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:1.4,x:'-1000px',y:'500px'}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{sc:2,x:'500px',y:'-1500px'}
+        },
+        {
+          kind:'html',type:'html',
+          pos:{x:'450px',y:'253px',z:'-1px'},
+          title:'Prikbord',
+          contenturl:'3d/prikbord.html'
+        }
+      ]
+    },
+    {
       'title':'Example',
       'sta': 1,
       'style':'normal',
