@@ -4,7 +4,7 @@ var adminAccount = {
   slideshowdata:[
     {
       title:'LV Poster Jezus',
-      sta: 6,
+      sta: 1,
       style:'puzzle-light-bg',
       load:'puzzle',
       type:'puzzle',
