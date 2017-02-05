@@ -42,7 +42,7 @@ var adminAccount = {
         },
         {
           kind:'html',type:'html',
-          pos:{x:'450px',y:'253px',z:'-1px'},
+          pos:{z:'-1px'},
           title:'Prikbord',
           contenturl:'3d/prikbord.html'
         }
