@@ -4,7 +4,7 @@ var OOAccount = {
   slideshowdata:[
     {
       title:'De brandweer en TEGEMA',
-      sta:3,
+      sta:1,
       load:'puzzle',
       style:'puzzle-light-bg',
       type:'puzzle',
@@ -20,14 +20,55 @@ var OOAccount = {
           pos:{ry:-45,rx:45}
         },
         {
-          type:'title',
-          title:'Hi',
-          pos:{x:'-50px',z:'-50px',y:'-25px',sc:0.1,rx:90}
+          title:'Opdracht',
+          pos:{x:'-50px',z:'-50px',y:'-25px',sc:0.1,rx:90},
+          list:{items:[
+            'brandweertrainingscentrum',
+            'internationaal<br><br>',
+            'faciliteiten',
+            'infrastructuur',
+          ]}
+        },
+        {
+          title:'Eisen',
+          pos:{x:'-125px',y:'-12px',z:'-134px',sc:0.049},
+          list:{items:[
+            'afgeweken, schaal maquette vs ontwerp klopt niet',
+            'gas, water',
+            'voorzieningen personeel &amp; gasten',
+            'verder:'
+          ]}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{x:'-125px',y:'-12px',z:'-120px',ry:-90,sc:0.01},
+          hide:true,comp:function(){$('.arrow-next').click()}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{x:'130px',y:'-12px',z:'-120px',ry:-90,sc:0.01},
+          hide:true,comp:function(){$('.arrow-next').click()}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{x:'330px',y:'-12px',z:'-120px',ry:-180,sc:0.01},
+          hide:true,comp:function(){$('.arrow-next').click()}
+        },
+        {
+          kind:'none',type:'none',
+          pos:{x:'330px',y:'-100px',z:'-50px',ry:-270,sc:0.05},
+          hide:true
         },
         {
           type:'title',
-          title:'Hi there',
-          pos:{x:'-125px',y:'-12px',z:'-134px',sc:0.049}
+          title:'Bufferzone',
+          subtitle:'24 m',
+          pos:{x:'535px',y:'-10px',z:'125px',rx:90,ry:-360,sc:0.1}
+        },
+        {
+          kind:'none',
+          type:'none',
+          pos:{rx:90,sc:1,ry:-360}
         },
         {
           kind:'html',
