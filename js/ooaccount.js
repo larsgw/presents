@@ -3,6 +3,27 @@ var OOAccount = {
   cover:"http://www.wall321.com/thumbnails/detail/20121107/android%20google%20android%20jelly%20bean%201920x1080%20wallpaper_www.wall321.com_26.jpg",
   slideshowdata:[
     {
+      title:'AAE Oude Hexapod',
+      sta:1,
+      load:'puzzle',
+      style:'puzzle-light-bg',
+      type:'puzzle',
+      slides:[
+        {
+          kind:'none',
+          type:'none',
+          pos:{ry:80,rx:25,sc:3}
+        },
+        {
+          kind:'html',
+          type:'html',hide:true,
+          title:'Oude Hexapod',
+          pos:{x:'0',y:'0',z:'0'},
+          contenturl:'3d/aae.html'
+        }
+      ]
+    },
+    {
       title:'De brandweer en TEGEMA',
       sta:1,
       load:'puzzle',
