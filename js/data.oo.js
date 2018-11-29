@@ -1,4 +1,19 @@
 slideshowdata.push({
+  title:'Escaperoom van de toekomst - Voortgang',
+  sta:1,
+  style:'dev2',
+  load:'puzzle',
+  type:'puzzle',
+  slides: [
+    {
+      kind:'html',
+      type:'html',
+      title:'City',
+      contenturl:'3d/escape-1-1.html'
+    }
+  ]
+})
+slideshowdata.push({
   title:'Werkplek van de toekomst - Introductie',
   sta:1,
   load:'long',
