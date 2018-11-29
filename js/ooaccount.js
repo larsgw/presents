@@ -3,6 +3,21 @@ var OOAccount = {
   cover:"http://www.wall321.com/thumbnails/detail/20121107/android%20google%20android%20jelly%20bean%201920x1080%20wallpaper_www.wall321.com_26.jpg",
   slideshowdata:[
     {
+      title:'Escaperoom van de toekomst - Voortgang',
+      sta:1,
+      style:'dev2',
+      load:'puzzle',
+      type:'puzzle',
+      slides: [
+        {
+          kind:'html',
+          type:'html',
+          title:'City',
+          contenturl:'3d/escape-1-1.html'
+        }
+      ]
+    },
+    {
       title:'AAE Oude Hexapod',
       sta:1,
       load:'puzzle',
